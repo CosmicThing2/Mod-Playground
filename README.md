@@ -1,6 +1,6 @@
 # Mod Playground
 
-Minecraft Mod Playground Script - Created by Oliver Cox (CosmicThing2)
+### Minecraft Mod Playground Script - Created by Oliver Cox (CosmicThing2)
 
 Mod Playground effectively functions as a Mod and Map Manager for Minecraft that works alongside MultiMC. It's primarily designed for children and those who aren't so familiar with downloading and installing Minecraft mods. It provides a number of useful features to work via a LAN configuration but can also be used at home.
 
@@ -20,7 +20,7 @@ For school (or other LANs) environments, the following features are also provide
 
 For Mod Playground to work, you MUST have:
 - MultiMC. This is provided in the download and the launcher can automatically install it for you. In a LAN environment, this would have to be copied/deployed to all PCs that are going to play the game.
-- Java. Minecraft (and any mods) require Java to be installed to work. This can be found [here] (https://www.java.com/en/download/manual.jsp). Install 'Windows Offline' (and 'Windows Offline 64-bit' if you've got a 64-bit system - STRONGLY RECOMMENDED!).
+- Java. Minecraft (and any mods) require Java to be installed to work. This can be found [here](https://www.java.com/en/download/manual.jsp). Install 'Windows Offline' (and 'Windows Offline 64-bit' if you've got a 64-bit system - STRONGLY RECOMMENDED!).
 - A valid Minecraft Account. To download the game and any needed libraries, you will be asked to sign into MultiMC with a valid Minecraft account. For schools (and other businesses), you must legally own an account per device the game is running on. I will never support hacked or unlicensed clients.
 - Internet Connection. For MultiMC to authenticate and for Mod Playground to download/update any mods, you need an Internet Connection. The faster the better!
 
