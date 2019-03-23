@@ -499,27 +499,47 @@ return
 ;Enable the 'saveloc' edit bar on GUI 5 if/when the tickboxes are clicked
 ToggleSaveLoc:
 Gui, 5:Submit, NoHide
-if SavesEnabled = 1
+TotalEnabled := SavesEnabled + BackupsEnabled + StatsEnabled
+if TotalEnabled > 0
+{
+	GuiControl, 5:Enable, BrowseSav
 	GuiControl, 5:Enable, saveloc
-else if BackupsEnabled = 1
-	GuiControl, 5:Enable, saveloc
-else if StatsEnabled = 1
-	GuiControl, 5:Enable, saveloc
+}
 else
+{
+	GuiControl, 5:Disable, BrowseSav
 	GuiControl, 5:Disable, saveloc
+}
 return
 
 ;Enable the 'regloc' edit bar on GUI 5 if/when the tickboxe is clicked
 ToggleRegLoc:
 Gui, 5:Submit, NoHide
 if RegistersEnabled = 1
+{
+	GuiControl, 5:Enable, BrowseReg
 	GuiControl, 5:Enable, regloc
+}
 else
+{
+	GuiControl, 5:Disable, BrowseReg
 	GuiControl, 5:Disable, regloc
+}
 return
 
-;Browse button on GUI 5
+;Browse buttons on GUI 5
 SelectFolder:
+FileSelectFolder, selecteddir,, 3, Select a Folder
+if selecteddir =
+	return
+if A_GuiControl = BrowseMMC
+	GuiControl, 5:, mmloc, %selecteddir%
+else if A_GuiControl = BrowseRes
+	GuiControl, 5:, mploc, %selecteddir%
+else if A_GuiControl = BrowseSav
+	GuiControl, 5:, saveloc, %selecteddir%
+else if A_GuiControl = BrowseReg
+	GuiControl, 5:, regloc, %selecteddir%
 return
 
 ;Run on first time setup, sets up all variables, folders and the password for the program to run
@@ -3997,10 +4017,10 @@ firstsetup(configloc)
 	Gui, 5:Add, Text, x10 y585 w580 h80, Valid Minecraft login email address to use for all users:
 	Gui, 5:Add, Edit, x10 y605 w500 h25 vofflineemail +Left, minecraftemailaddress@test.com
 	Gui, 5:Font,norm s10,Calibri Light
-	Gui, 5:Add, Button, x515 y160 w60 h25 gSelectFolder, Browse...
-	Gui, 5:Add, Button, x515 y240 w60 h25 gSelectFolder, Browse...
-	Gui, 5:Add, Button, x515 y350 w60 h25 gSelectFolder, Browse...
-	Gui, 5:Add, Button, x515 y460 w60 h25 gSelectFolder, Browse...
+	Gui, 5:Add, Button, x515 y160 w60 h25 vBrowseMMC gSelectFolder, Browse...
+	Gui, 5:Add, Button, x515 y240 w60 h25 vBrowseRes gSelectFolder, Browse...
+	Gui, 5:Add, Button, x515 y350 w60 h25 vBrowseSav gSelectFolder, Browse...
+	Gui, 5:Add, Button, x515 y460 w60 h25 vBrowseReg gSelectFolder, Browse...
 	Gui, 5:Font,norm s14,Calibri Light
 	Gui, 5:Add, Button, x10 y650 w100 h50 gSaveConfig, Save
 	Gui, 5:Font,norm s12,Calibri Light
@@ -4026,6 +4046,7 @@ firstsetup(configloc)
 	}
 	
 	GuiControl, 5:Disable, regloc
+	GuiControl, 5:Disable, BrowseReg
 	GuiControl, 5:Disable, TimelockStart
 	GuiControl, 5:Disable, TimelockEnd
 	GuiControl, 5:Disable, offlineemail
