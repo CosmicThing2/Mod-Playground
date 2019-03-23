@@ -23,4 +23,3 @@ For Mod Playground to work, you MUST have:
 - Java. Minecraft (and any mods) require Java to be installed to work. I recommend having the latest 32-bit and 64-bit versions installed (unless you've got a 32-bit PC). Java can be found [here](https://www.java.com/en/download/manual.jsp).
 - Valid Minecraft Account(s). To download the game and any needed libraries, you will be asked to sign into MultiMC with a valid Minecraft account. For schools (and other businesses), you must legally own an account per device the game is running on. I will never support hacked or unlicensed clients.
 - Internet Connection. For MultiMC to authenticate and for Mod Playground to download/update any mods, you need an Internet Connection. The faster the better!
-
