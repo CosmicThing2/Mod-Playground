@@ -5,7 +5,7 @@
 
 ## Install
 
-If running it for the first time, download and extract the zip and then run 'Minecraft Mod Playground.exe'. Do not delete or move it/the other files as these are needed for installation.
+If running it for the first time, download and extract the zip and then run 'Minecraft Mod Playground.exe'. Do not delete or move it/the other files as these are needed for installation. On first launching a game, you will need to setup MultiMC, choose your RAM, Java installation and enter your account details. You may then need to reload the Mod Playground.
 
 If updating, simply overwrite 'Minecraft Mod Playground.exe'.
 
