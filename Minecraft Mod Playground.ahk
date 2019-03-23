@@ -52,9 +52,19 @@ spacetolerance = 0 ;If the install folder on the client PC is less than this (in
 mcver = 1.12.2 ;Minecraft version that this instance uses, will need to be changed if minecraft is updated. Note that all mods only work with one minecraft version!! You'll need to download new mods! Be very careful changing this!
 configloc = C:\Program Files (x86)\Mod Playground\cfg.ini ;Default location of the config file if not specified
 configdir = C:\Program Files (x86)\Mod Playground ;Default config directory
-minecraftdirtype = minecraft ;Is it 'minecraft' or '.minecraft'?
-serverdirtype = minecraft ;Is it 'minecraft' or '.minecraft' on the server?
 customusername = %A_UserName% ;Username to use for the player (if forcing offline mode)
+
+;Is it 'minecraft' or '.minecraft'?
+IfExist, %multimcfolderloc%\instances\%neededmcver%\minecraft
+	minecraftdirtype = minecraft 
+else
+	minecraftdirtype = .minecraft
+
+;Is it 'minecraft' or '.minecraft' on the server?
+IfExist, %mclocation%\%version%\minecraft
+	serverdirtype = minecraft
+else
+	serverdirtype = .minecraft
 
 ;Variable defaults used in the program, do not ever change these
 newinstall = 0 ;Used to detect if minecraft has been installed recently or not. If it has, we don't need to bother wiping all mods/configs from a previous run
@@ -407,9 +417,9 @@ Progress, 50, Downloading your saves, Starting up launcher. Please Wait...,Mod P
 
 ;Run function to add the users' worlds to the backup GUI, this GUI is only shown once the user launches minecraft. See the function for more details. Don't bother wiping local saves though if backups are disabled.
 if BackupsEnabled = 1
-	addBackupWorlds(savefilesloc, version, 1, multimcfolderloc, 1, 0)
+	addBackupWorlds(savefilesloc, version, 1, multimcfolderloc, 1, 0, minecraftdirtype)
 else
-	addBackupWorlds(savefilesloc, version, 0, multimcfolderloc, 0, 0)
+	addBackupWorlds(savefilesloc, version, 0, multimcfolderloc, 0, 0, minecraftdirtype)
 
 Progress, 95, Loading last save and finishing up, Starting up launcher. Please Wait...,Mod Playground
 
@@ -1804,6 +1814,8 @@ if legacymap = true
 	IfMsgBox, Cancel
 		return
 	
+
+	
 	;If they're happy with it, disable buttons to prevent the user launching minecraft while it's still trying to download their map. Yep, this was a problem....
 	GuiControl, Disable, MapDL
 	GuiControl, 2:, Launch, Launching Minecraft...
@@ -1816,6 +1828,13 @@ if legacymap = true
 	;Copy in the instance, and then copy in the map inside this instance
 	FileCopyDir, %mclocation%\%neededmcver%, %multimcfolderloc%\instances\%neededmcver%
 	
+	;If the instance hasn't previously been initialised/run by the user, the folder we need to copy the world into won't actually exist yet. So make it.
+	IfNotExist, %multimcfolderloc%\instances\%neededmcver%\.minecraft\saves
+	{
+		IfNotExist, %multimcfolderloc%\instances\%neededmcver%\minecraft\saves
+			FileCreateDir, %multimcfolderloc%\instances\%neededmcver%\.minecraft\saves
+	}
+	
 	IfExist, %multimcfolderloc%\instances\%neededmcver%\.minecraft
 		FileCopyDir, %mapsloc%\%selecteditem%, %multimcfolderloc%\instances\%neededmcver%\.minecraft\saves\%selecteditem%
 	
@@ -1824,17 +1843,31 @@ if legacymap = true
 	
 	;Resource packs in 1.7.10 worked a bit differently, make sure we handle that!
 	if neededmcver = 1.7.10
-	{
+	{	
+		;To make resource packs work, we need this inside the options.txt file
+		defaultoptionsfile =
+		(
+		resourcePacks:["resources.zip"]
+		)
+	
 		;Some maps come with a 'resources.zip' pack inside the map folder. If they do, and it's minecraft version 1.7.10, copy that zip folder to the separate 'resourcepacks' folder.
 		IfExist, %multimcfolderloc%\instances\%neededmcver%\.minecraft\saves\%selecteditem%\resources.zip
 		{
 			FileCreateDir, %multimcfolderloc%\instances\%neededmcver%\.minecraft\resourcepacks
 			FileCopy, %multimcfolderloc%\instances\%neededmcver%\.minecraft\saves\%selecteditem%\resources.zip, %multimcfolderloc%\instances\%neededmcver%\.minecraft\resourcepacks
+			
+			;To use this resource pack, we need to update the options.txt. But lets only update it if it doesn't already exist (allows user to add their own options.txt if they want to)
+			IfNotExist, %multimcfolderloc%\instances\%neededmcver%\.minecraft\options.txt
+				FileAppend, %defaultoptionsfile%, %multimcfolderloc%\instances\%neededmcver%\.minecraft\options.txt
 		}
 		IfExist, %multimcfolderloc%\instances\%neededmcver%\minecraft\saves\%selecteditem%\resources.zip
 		{
 			FileCreateDir, %multimcfolderloc%\instances\%neededmcver%\minecraft\resourcepacks
 			FileCopy, %multimcfolderloc%\instances\%neededmcver%\minecraft\saves\%selecteditem%\resources.zip, %multimcfolderloc%\instances\%neededmcver%\minecraft\resourcepacks
+			
+			;To use this resource pack, we need to update the options.txt. But lets only update it if it doesn't already exist (allows user to add their own options.txt if they want to)
+			IfNotExist, %multimcfolderloc%\instances\%neededmcver%\minecraft\options.txt
+				FileAppend, %defaultoptionsfile%, %multimcfolderloc%\instances\%neededmcver%\minecraft\options.txt
 		}
 	}
 	
@@ -1863,16 +1896,28 @@ else
 	
 	;Otherwise, keep asking them what they want to save the world as until script is happy! Check it doesn't already exist and they've actually typed something in etc..
 	Loop {
-	mapname =
-	InputBox, mapname, Name your world!, You are currently downloading '%selecteditem%' to your saves. What would you like to call the world?,, 350, 160,,,,, %selecteditem%
-	If ErrorLevel
-		return
-	if mapname =
-		return
-	IfExist, %savefilesloc%\%A_UserName%\%mapname%
-		MsgBox, 16, World already exists!, Error, you've already got a save called %mapname%! Please delete this one or use a different name!
-	else
-		break
+		mapname =
+		InputBox, mapname, Name your world!, You are currently downloading '%selecteditem%' to your saves. What would you like to call the world?,, 350, 160,,,,, %selecteditem%
+		If ErrorLevel
+			return
+			
+		if mapname =
+			return
+		
+		if BackupsEnabled = 1
+		{
+			IfExist, %savefilesloc%\%A_UserName%\%mapname%
+				MsgBox, 16, World already exists!, Error, you've already got a save called %mapname%! Please delete this one or use a different name!
+			else
+				break
+		}
+		else
+		{
+			IfExist, %multimcfolderloc%\instances\%version%\%minecraftdirtype%\saves\%mapname%
+				MsgBox, 16, World already exists!, Error, you've already got a save called %mapname%! Please delete this one or use a different name!
+			else
+				break
+		}
 	}
 
 	;Disable the various launch buttons to prevent multiple downloads at the same time or them launching minecraft while it's still downloading!
@@ -1880,13 +1925,17 @@ else
 	GuiControl, 2:, Launch, Downloading Map...
 	GuiControl, 2:Disable, Launch
 
-	;Now copy in the save to the local machine and the users saves' folder
+	;Now copy in the save to the local machine (and the users saves' folder if we're using backups)
 	FileCopyDir, %mapsloc%\%selecteditem%, %multimcfolderloc%\instances\%version%\%minecraftdirtype%\saves\%mapname%
-	FileCopyDir, %mapsloc%\%selecteditem%, %savefilesloc%\%A_UserName%\%mapname%
 
-	;Run a refresh for the backup GUI (if the backups are enabled)
+	;Also copy to the server and then run a refresh for the backup GUI (if the backups are enabled)
 	if BackupsEnabled = 1
-		addBackupWorlds(savefilesloc, version, 0, multimcfolderloc, 1, 0)
+	{
+		FileCopyDir, %mapsloc%\%selecteditem%, %savefilesloc%\%A_UserName%\%mapname%
+		addBackupWorlds(savefilesloc, version, 0, multimcfolderloc, 1, 0, minecraftdirtype)
+	}
+	else
+		addBackupWorlds(savefilesloc, version, 0, multimcfolderloc, 0, 0, minecraftdirtype)
 
 	;Let the user know the task has done
 	MsgBox, 0, Map Download Successful!, Successfully downloaded %selecteditem%, copied to save folder as %mapname%.
@@ -1911,7 +1960,7 @@ if selecteditem =
 }
 
 ;Confirm with the user
-InputBox, confirm, Are you sure?, Delete the world '%selecteditem%' from your saves? The world will not be backed up anymore but will still exist on this machine until you restart Mod Manager.`n`nPlease type 'okay' to confirm!
+InputBox, confirm, Are you sure?, Delete the world '%selecteditem%' from your saves?`n`nPlease type 'okay' to confirm!,,,160
 
 ;If user is happy, disable all buttons temporarily and then remove the world directory from their saves
 if confirm = okay
@@ -1922,14 +1971,19 @@ if confirm = okay
 	GuiControl, Disable, MapDL
 	GuiControl, 2:, Launch, Deleting Map...
 	GuiControl, 2:Disable, Launch
-	FileRemoveDir, %savefilesloc%\%A_UserName%\%selecteditem%, 1
+	
+	if BackupsEnabled = 1
+		FileRemoveDir, %savefilesloc%\%A_UserName%\%selecteditem%, 1
+	else
+		FileRemoveDir, %multimcfolderloc%\instances\%version%\%minecraftdirtype%\saves\%selecteditem%, 1
+		
 	GuiControl, Enable, DeleteSave
 	GuiControl, Enable, DownloadMap
 	GuiControl, Enable, UploadMap
 	GuiControl, Enable, MapDL
 	GuiControl, 2:, Launch, Launch Minecraft!
 	GuiControl, 2:Enable, Launch
-	MsgBox, The world '%selecteditem%' has been removed from your saves. It will still exist on this computer until the next time Mod Manager is launched.
+	MsgBox, The world '%selecteditem%' has been removed from your saves.
 }
 
 ;If user is not happy, just return
@@ -1937,7 +1991,7 @@ else
 	return
 	
 ;Run a refresh of backup GUI
-addBackupWorlds(savefilesloc, version, 0, multimcfolderloc, BackupsEnabled, 0)
+addBackupWorlds(savefilesloc, version, 0, multimcfolderloc, BackupsEnabled, 0, minecraftdirtype)
 return
 
 ;This function is run when the user presses the green 'down arrow' to download a map to their documents. Rarely used but exists in-case.
@@ -1980,16 +2034,7 @@ GuiControl, Disable, MapDL
 if BackupsEnabled = 1
 	FileCopyDir, %savefilesloc%\%A_UserName%\%selecteditem%, %mapdldir%\%selecteditem%
 else
-{
-	;Change the variables slightly if '.minecraft' exists
-	IfExist, %multimcfolderloc%\instances\%version%\.minecraft
-		minecraftdirtype = .minecraft
-		
-	IfExist, %mclocation%\%version%\.minecraft
-		serverdirtype = .minecraft
-		
 	FileCopyDir, %multimcfolderloc%\instances\%version%\%minecraftdirtype%\saves\%selecteditem%, %mapdldir%\%selecteditem%
-}
 
 ;Enable all buttons once done (or not)
 If ErrorLevel
@@ -2016,7 +2061,7 @@ UploadMap:
 Gui, Submit, NoHide
 
 ;Query and confirm with the user
-MsgBox, 1, Upload Map, This button allows you to upload a save/map to Mod Playground. Please extract the save first, it must also contain a 'level.dat' file.`n`nContinue?
+MsgBox, 1, Upload Map, This button allows you to upload a save/map from your computer, to your saves. Please extract the save first, it must also contain a 'level.dat' file.`n`nContinue?
 IfMsgBox Cancel
 	return
 	
@@ -2063,16 +2108,7 @@ if mapupnamedone =
 if BackupsEnabled = 1
 	serverorlocaldir = %savefilesloc%\%A_UserName%
 else
-{
-	;Change the variables slightly if '.minecraft' exists
-	IfExist, %multimcfolderloc%\instances\%version%\.minecraft
-		minecraftdirtype = .minecraft
-		
-	IfExist, %mclocation%\%version%\.minecraft
-		serverdirtype = .minecraft
-
 	serverorlocaldir = %multimcfolderloc%\instances\%version%\%minecraftdirtype%\saves
-}
 
 ;Check that name doesn't exist already
 IfExist, %serverorlocaldir%\%mapupnamedone%
@@ -2090,7 +2126,7 @@ If ErrorLevel
 }
 
 ;Copy the new world to the local machine as well as the users saves. Then let the user know. DON'T SHOW THE PROGRESS BAR! :)
-addBackupWorlds(savefilesloc, version, 1, multimcfolderloc, backupsEnabled, 1)
+addBackupWorlds(savefilesloc, version, 1, multimcfolderloc, backupsEnabled, 1, minecraftdirtype)
 MsgBox, 0, Success!, Successfully uploaded '%mapupdir%' to your saves under the name '%mapupnamedone%'
 return
 
@@ -3107,13 +3143,6 @@ else
 GuiControl,, Launch, Launching...
 GuiControl, Disable, Launch
 
-;Change the variables slightly if '.minecraft' exists
-IfExist, %multimcfolderloc%\instances\%version%\.minecraft
-	minecraftdirtype = .minecraft
-	
-IfExist, %mclocation%\%version%\.minecraft
-	serverdirtype = .minecraft
-
 ;If Minecraft was previously run/installed, delete and renew the mods and configs folder (removing any old rubbish left over from the last user that ran the game)
 if newinstall = 0
 {
@@ -3218,7 +3247,7 @@ else
 
 ;When the 'refresh' button is pressed, run the 'addbackupworlds' function. See below for more detail
 RefreshBackup:
-AddBackupWorlds(savefilesloc, version, 0, multimcfolderloc, 1, 0)
+AddBackupWorlds(savefilesloc, version, 0, multimcfolderloc, 1, 0, minecraftdirtype)
 return
 
 ;When the 'backup' button is pressed, run the 'backup' function. See below for more detail
@@ -3518,8 +3547,8 @@ exist(version, spacetolerance, multimcfolderloc)
 		return false
 }
 
-;This function adds the users' worlds to the backup GUI, however it can also wipe the local saves if needed (e.g when the script is initially run)
-addBackupWorlds(savefilesloc, version, removedir, multimcfolderloc, backupsEnabled, uploadbutton)
+;This function adds the users' worlds to the backup GUI and/or maps GUI, however it can also wipe the local saves if needed (e.g when the script is initially run e.g.)
+addBackupWorlds(savefilesloc, version, removedir, multimcfolderloc, backupsEnabled, uploadbutton, mcdirtype)
 {
 
 	;Delete anything in the list from a previous run on the backup GUI (if it's enabled), also set the backup GUI as the default, this is necessary to make 'LV_Add' work correctly
@@ -3528,12 +3557,6 @@ addBackupWorlds(savefilesloc, version, removedir, multimcfolderloc, backupsEnabl
 		Gui, 3:Default
 		LV_Delete()
 	}
-	
-	mcdirtype = minecraft
-	
-	;Firstly check if it's '.minecraft' or just 'minecraft' on client and server
-	IfExist, %multimcfolderloc%\instances\%version%\.minecraft
-		mcdirtype = .minecraft
 	
 	;If launched at the start of the program, wipe the local save dir. This is to stop tonnes of worlds all taking up space on the client PCs!
 	if removedir = 1
@@ -3719,7 +3742,7 @@ addBackupWorlds(savefilesloc, version, removedir, multimcfolderloc, backupsEnabl
 		}
 	}
 	
-	;Set main GUI back to default and then also add all server and/or local worlds to the 'maps' tab
+	;Set main GUI back to default and then also add all server or local worlds to the 'maps' tab
 	Gui, 1:Default
 	if backupsEnabled = 1
 		GuiControl, 1:, MapSavesList, |%serversaves%|
