@@ -1,6 +1,6 @@
 /*
 
-Minecraft Mod Playground Script - Created by Oliver Cox (CosmicThing2)
+Minecraft Mod Playground Script - Created by Oliver Cox (CosmicThing2) aa
 This script effectively functions as a simply 'mod and map manager' for Minecraft. It contains a large number of preset mods already setup for Minecraft 1.12.2. The script also has a number of other functions specifically for use at schools such as:
 - Automatic registering of students/users when they launch this script
 - Preventing students/users launching the game before a certain time (by default 2pm)
