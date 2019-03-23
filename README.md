@@ -1,6 +1,6 @@
 # Mod Playground
 
-### Minecraft Mod Playground Script - Created by Oliver Cox (CosmicThing2)
+### Minecraft Mod Playground Script - Created by CosmicThing2
 
 Mod Playground effectively functions as a Mod and Map Manager for Minecraft that works alongside MultiMC. It's primarily designed for children and those who aren't so familiar with downloading and installing Minecraft mods. It provides a number of useful features to work via a LAN configuration but can also be used at home.
 
