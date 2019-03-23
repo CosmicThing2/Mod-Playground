@@ -15,26 +15,23 @@ For this script to work, you MUST have:
 
 Thanks for using this program! :)
 
+Copyright 2019 Oliver Cox
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
 */
-
-/*
-
-TO ADD A MOD:
-
-ADD IT TO 'CustomMods.txt' INSIDE THE 'MODS' FOLDER!
-
-If you wish to 'hard-code' it, follow the below steps
-(to jump quickly to the lines you need to edit, simply search for the hash code at the end of each step - Ctrl-F)
-
-1. Add it to one of 'modsTech/modsMagic/modsCreative/modsOther' below. Items must be comma separated. #addmods1
-2. Add it to one of 'leftboxTech/leftboxMagic/leftboxCreative/leftboxOther' below. Items are PIPE separated (and the last character in the list MUST be a pipe) #addmods2
-3. Add an entry for it under the 'ItemSelectL' function with a description/picture/youtube link #addmods3
-4. Update the 'ResetVars()' function to also contain to new mod(s) #addmods4
-5. Don't forget to add in the picture file (a jpg or png) at %modpicsloc% and the mod jar file(s) at %modfilesloc%. Note that whatever you call the mod here, MUST match the name of the folder at %modfilesloc%
-
- */
  
-;---------------------Setup initial settings for the program, do not change anything in this small section below
+;---------------------Setup initial settings for the program
 
 ;These ensure the script can't accidently be run twice at the same time and that it always runs as fast as possible, don't need to be changed at all
 #SingleInstance ignore
