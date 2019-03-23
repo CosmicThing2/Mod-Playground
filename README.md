@@ -3,6 +3,14 @@
 ### Minecraft Mod Playground Script - Created by CosmicThing2
 ### Latest download: [MPG.zip](https://github.com/CosmicThing2/Mod-Playground/raw/master/MPG/MPG.zip)
 
+## Install
+
+If running it for the first time, download and extract the zip and then run 'Minecraft Mod Playground.exe'. Do not delete or move it/the other files as these are needed for installation.
+
+If updating, simply overwrite 'Minecraft Mod Playground.exe'.
+
+## Introduction
+
 Mod Playground effectively functions as a Mod and Map Manager for Minecraft that works alongside MultiMC. It's primarily designed for children and those who aren't so familiar with downloading and installing Minecraft mods. It provides a number of useful features to work via a LAN configuration but can also be used at home.
 
 Mod Playground provides the following features:
