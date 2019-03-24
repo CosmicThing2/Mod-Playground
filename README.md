@@ -4,9 +4,12 @@
 ### Latest download: [MPG.exe](https://github.com/CosmicThing2/Mod-Playground/raw/master/Install/MPG.exe)
 
 ## Install
+### First time
+If running it for the first time, simply run MPG.exe. The Mod Playground will ask you for a few different directories but the defaults will be fine for most people. In a LAN environment, you may wish to enable some of/more of the advanced features.
 
-If running it for the first time, download and extract the zip and then run 'Minecraft Mod Playground.exe'. Do not delete or move it/the other files as these are needed for installation. On first launching a game, you will need to setup MultiMC, choose your RAM, Java installation and enter your account details. You may then need to reload the Mod Playground.
+On first launching a game, you will need to setup MultiMC, choose your RAM, Java installation and enter your account details. You may then need to reload the Mod Playground.
 
+### Updating
 If updating, simply overwrite 'Minecraft Mod Playground.exe'.
 
 ## Introduction
