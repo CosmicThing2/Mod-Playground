@@ -5,7 +5,7 @@
 
 ## Install
 ### First time
-If running it for the first time, simply run MPG.exe and extract it. The Mod Playground will then ask you for a few different directories but the defaults will be fine for most people. In a LAN environment, you may wish to enable some of/more of the advanced features.
+If running it for the first time, simply run the self-extracting package 'MPG.exe'. The Mod Playground will then ask you for a few different directories but the defaults will be fine for most people. In a LAN environment, you may wish to enable some of/more of the advanced features.
 
 On first launching a game, you will need to setup MultiMC, choose your RAM, Java installation and enter your account details. You may then need to reload the Mod Playground.
 
