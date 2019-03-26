@@ -193,7 +193,7 @@ else
 setupVars(configloc, configdir)
 
 ;Read the admin password from 'mppwd.txt'
-FileReadLine, encpass, %configdir%\mppwd.txt, 1
+FileReadLine, hash, %configdir%\mppwd.txt, 1
 
 ;Read CustomMods.txt and CustomMaps.txt
 FileRead, custommodslist, %modfilesloc%\CustomMods.txt
@@ -228,7 +228,8 @@ if Timelock = 1
 		if ErrorLevel
 			ExitApp
 			
-		; Compare hash
+		;Hash the input data and compare with the stored hash
+		datain := bcrypt_sha256(datain)
 		if datain != %hash%
 		{
 			MsgBox, 16, Bad Password!, Bad password!
@@ -255,7 +256,9 @@ IfNotExist, %multimcfolderloc%
 	InputBox, datain, Not Installed!, Minecraft hasn't been installed on this computer yet in %multimcfolderloc%`n`nPlease speak to an ICT Administrator or enter administrator password., HIDE
 	if ErrorLevel
 		ExitApp
-
+		
+	;Hash the input data and compare with the stored hash
+	datain := bcrypt_sha256(datain)
 	if datain != %hash%
 	{
 		MsgBox, 16, Bad Password!, Bad password!
@@ -1278,7 +1281,9 @@ Help:
 InputBox, datain, Help!, Please enter administrator password to access advanced menu, HIDE, 260, 140
 if ErrorLevel
 	return
-	
+
+;Hash the input data and compare with the stored hash
+datain := bcrypt_sha256(datain)
 if datain != %hash%
 {
 	MsgBox, 16, Error!, Incorrect Password entered!
@@ -1322,11 +1327,13 @@ if not (A_IsAdmin or RegExMatch(full_command_line, " /restart(?!\S)"))
 }
 
 ;Ask user to enter the correct current password
-InputBox, inputpass, Confirm?, To change the administrator password`, please either delete the config file (cfg.ini) and the password file (mppwd.txt)`, or enter the current password, HIDE
+InputBox, datain, Confirm?, To change the administrator password`, please either delete the config file (cfg.ini) and the password file (mppwd.txt)`, or enter the current password, HIDE
 if ErrorLevel
 	return
 	
-if inputpass != %hash%
+;Hash the input data and compare with the stored hash
+datain := bcrypt_sha256(datain)
+if datain != %hash%
 {
 	MsgBox, 16, Bad Password!, Bad password!
 	return
