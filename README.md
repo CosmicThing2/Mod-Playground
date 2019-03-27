@@ -5,12 +5,42 @@
 
 ## Install
 ### First time
-If running it for the first time, simply run the self-extracting package 'MPG.exe'. The Mod Playground will then ask you for a few different directories but the defaults will be fine for most people. In a LAN environment, you may wish to enable some of/more of the advanced features. See LAN section below!
+If running it for the first time, simply run the self-extracting package 'MPG.exe'. The Mod Playground will then ask you for a few different directories but the defaults will be fine for most people (for more information on these settings, see below). In a LAN environment, you may wish to enable some of/more of the advanced features.
 
 On first launching a game, you will need to setup MultiMC, choose your RAM, Java installation and enter your account details. You may then need to reload the Mod Playground.
 
 ### Updating
 If updating, simply overwrite 'Minecraft Mod Playground.exe'. Note, for major updates you may need to wipe your cfg.ini and/or mppwd.txt.
+
+## First Time Setup
+
+If you haven't run Mod Playground before or have specified a new location for the config file, it will ask you to run first time setup, this must be run as an administrator. The following directories and settings are available:
+- MultiMC location. Where should MultiMC be installed? I'd probably recommend C:\MultiMC in most cases. Mod Playground can copy this in for you automatically if the folder is available.
+- Resources for Mod Playground. Where should all the resources for the program be installed? This includes Mods, Maps, Images, Instances, the Configs and any Libraries. (For a home setup, this can just be your documents, but in a LAN you'd want to set this to some shared location that all clients can access). 
+
+The settings below all use the same location. For a home setup, this could just be your documents, but in a LAN you'd want to set this to some shared location that all clients can access, CLIENTS/MOD PLAYGROUND NEEDS WRITE ACCESS TO THIS DIRECTORY!).
+
+- Enable autosaving mod lists. Mod Playground can remember what mods you selected last time you played and 'auto save' this to a file. It will then load this on every launch. Very helpful and recommended.
+- Enable backup manager. The Backup Manager loads after you've started the game. It allows your saves to also be copied to the location specified when you press the 'Backup' button on the manager. These saves will then be automatically downloaded on every launch, allowing for users to move around and have their saves follow them to any computer.
+- Enable usage stats. If enabled, will log what mods users select and save this data to 'modstats.ini' inside each users' folder. Allows the administrator to see what mods are popular!
+
+Registers can optionally use a different location.
+- Enable registers. This will log every user that launches Mod Playground including their username, the time and date, the computer they launched it on and whether they were allowed to play, bypassed with the admin password or were blocked. Only recommended for LAN environments.
+
+Other settings:
+- Allows access only at certain times. Only recommended in LAN environments, allows controlling when users can launch the program. If outside of the allowed time, the administrator password will be requested.
+- Force offline mode. This will edit the accounts file in MultiMC to force it to launch in Offline mode. This means that users will be unable to play Minecraft online and/or join any online servers. Useful in schools where students may not be allowed to play online for safeguarding reasons. See below for more information as this requires some other setup!
+
+## Offline Mode
+
+Offline mode is a feature that blocks all online content by deliberately forcing MultiMC (and therefore Minecraft) into Offline Mode.　To do this however, you must ensure the following url is BLOCKED (via a firewall e.g.) for all users/students: https://authserver.mojang.com. I'd also recommend ALLLOWING the following URLs to prevent issues later (as the game may need to download resources at certain points):
+- https://libraries.minecraft.net
+- https://files.minecraftforge.net
+- https://launcher.mojang.com
+- https://launchermeta.mojang.com
+- https://resources.download.minecraft.net
+
+You will then need to login to MultiMC once on each computer that you want users/students to play Minecraft on, this could be done on an administrator account that has https://authserver.mojang.com unblocked. Once MultiMC and Minecraft has been authenticated at least once, users can then launch the game in offline mode on their own accounts.
 
 ## Introduction
 
