@@ -58,6 +58,7 @@ Custom Mods need the following:
 - an image file located in the 'Images' directory
 - a YouTube link
 - a description of the mod
+
 Mods also need a folder matching the name, containing the jar files inside the 'Mods' folder (obviously!). If it's available on curseforge, Mod Playground can also update it automatically for you. Just add a shortcut file that matches the name on CurseForge (e.g. https://minecraft.curseforge.com/projects/<NAME>).
 
 Custom Maps need these:
@@ -67,4 +68,5 @@ Custom Maps need these:
 - version of minecraft that the map is for (if it's not 1.12.2, you must also have an instance available for it to use inside 'Instances' called the same name as the version - e.g. an instance called 1.11.2)
 - number of players (e.g. 2 - 4, or 3+ etc)
 - a description of the map
+
 Maps also need a folder matching the name, containing the map files inside the 'Maps' folder (obviously!). Make sure you extract it, i.e. Maps\<mapname>\level.dat must exist!
