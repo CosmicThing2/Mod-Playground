@@ -46,7 +46,7 @@ Depending on whether you've enabled the backup manager (not needed for personal/
 
 ## Adding Custom Mods and Custom Maps
 
-But but what if I want to add my own stuff to the GUI? I want to add my own mods and/or maps!
+But what if I want to add my own stuff to the GUI? I want to add my own mods and/or maps!
 
 Yes I hear you, don't panic! I'd probably only recommend this inside a LAN based setup though as it can be a bit fiddly and there are easier ways to do it on a home setup!
 
@@ -59,7 +59,7 @@ Custom Mods need the following:
 - a YouTube link
 - a description of the mod
 
-Mods also need a folder matching the name, containing the jar files inside the 'Mods' folder (obviously!). If it's available on curseforge, Mod Playground can also update it automatically for you. Just add a shortcut file that matches the name on CurseForge (e.g. https://minecraft.curseforge.com/projects/<NAME>).
+Mods also need a folder (matching the name you just added to CustomMods.txt), containing the jar files inside the 'Mods' folder (obviously!). If it's available on curseforge, Mod Playground can also update it automatically for you. Just add a shortcut file that matches the name on CurseForge (e.g. https://minecraft.curseforge.com/projects/NAME).
 
 Custom Maps need these:
 - a name
@@ -69,4 +69,4 @@ Custom Maps need these:
 - number of players (e.g. 2 - 4, or 3+ etc)
 - a description of the map
 
-Maps also need a folder matching the name, containing the map files inside the 'Maps' folder (obviously!). Make sure you extract it, i.e. Maps\<mapname>\level.dat must exist!
+Maps also need a folder (matching the name you just added to CustomMaps.txt), containing the map files inside the 'Maps' folder (obviously!). Make sure you extract it, i.e. Maps\MAPNAME\level.dat must exist!
