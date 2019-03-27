@@ -15,26 +15,23 @@ For this script to work, you MUST have:
 
 Thanks for using this program! :)
 
+Copyright 2019 Oliver Cox
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
 */
-
-/*
-
-TO ADD A MOD:
-
-ADD IT TO 'CustomMods.txt' INSIDE THE 'MODS' FOLDER!
-
-If you wish to 'hard-code' it, follow the below steps
-(to jump quickly to the lines you need to edit, simply search for the hash code at the end of each step - Ctrl-F)
-
-1. Add it to one of 'modsTech/modsMagic/modsCreative/modsOther' below. Items must be comma separated. #addmods1
-2. Add it to one of 'leftboxTech/leftboxMagic/leftboxCreative/leftboxOther' below. Items are PIPE separated (and the last character in the list MUST be a pipe) #addmods2
-3. Add an entry for it under the 'ItemSelectL' function with a description/picture/youtube link #addmods3
-4. Update the 'ResetVars()' function to also contain to new mod(s) #addmods4
-5. Don't forget to add in the picture file (a jpg or png) at %modpicsloc% and the mod jar file(s) at %modfilesloc%. Note that whatever you call the mod here, MUST match the name of the folder at %modfilesloc%
-
- */
  
-;---------------------Setup initial settings for the program, do not change anything in this small section below
+;---------------------Setup initial settings for the program
 
 ;These ensure the script can't accidently be run twice at the same time and that it always runs as fast as possible, don't need to be changed at all
 #SingleInstance ignore
@@ -196,7 +193,7 @@ else
 setupVars(configloc, configdir)
 
 ;Read the admin password from 'mppwd.txt'
-FileReadLine, encpass, %configdir%\mppwd.txt, 1
+FileReadLine, hash, %configdir%\mppwd.txt, 1
 
 ;Read CustomMods.txt and CustomMaps.txt
 FileRead, custommodslist, %modfilesloc%\CustomMods.txt
@@ -231,9 +228,9 @@ if Timelock = 1
 		if ErrorLevel
 			ExitApp
 			
-		;Decrypt current password and match it against the entered password
-		unencpass := DraGon_Dec(encpass)
-		if datain != %unencpass%
+		;Hash the input data and compare with the stored hash
+		datain := bcrypt_sha256(datain)
+		if datain != %hash%
 		{
 			MsgBox, 16, Bad Password!, Bad password!
 			ExitApp
@@ -259,9 +256,10 @@ IfNotExist, %multimcfolderloc%
 	InputBox, datain, Not Installed!, Minecraft hasn't been installed on this computer yet in %multimcfolderloc%`n`nPlease speak to an ICT Administrator or enter administrator password., HIDE
 	if ErrorLevel
 		ExitApp
-
-	unencpass := DraGon_Dec(encpass)
-	if datain != %unencpass%
+		
+	;Hash the input data and compare with the stored hash
+	datain := bcrypt_sha256(datain)
+	if datain != %hash%
 	{
 		MsgBox, 16, Bad Password!, Bad password!
 		ExitApp
@@ -638,11 +636,11 @@ else
 	skipEnc = True
 }
 
-;Encrypt this password
+; Hash this password
 if skipEnc = False
 {
-	encpass := DraGon_Enc(adminpass)
-	FileAppend, %encpass%, %configdir%\mppwd.txt
+	hash := bcrypt_sha256(adminpass)
+	FileAppend, %hash%, %configdir%\mppwd.txt
 }
 MsgBox, Password set!
 
@@ -1283,9 +1281,10 @@ Help:
 InputBox, datain, Help!, Please enter administrator password to access advanced menu, HIDE, 260, 140
 if ErrorLevel
 	return
-	
-unencpass := DraGon_Dec(encpass)
-if datain != %unencpass%
+
+;Hash the input data and compare with the stored hash
+datain := bcrypt_sha256(datain)
+if datain != %hash%
 {
 	MsgBox, 16, Error!, Incorrect Password entered!
 	return
@@ -1328,12 +1327,13 @@ if not (A_IsAdmin or RegExMatch(full_command_line, " /restart(?!\S)"))
 }
 
 ;Ask user to enter the correct current password
-InputBox, inputpass, Confirm?, To change the administrator password`, please either delete the config file (cfg.ini) and the password file (mppwd.txt)`, or enter the current password, HIDE
+InputBox, datain, Confirm?, To change the administrator password`, please either delete the config file (cfg.ini) and the password file (mppwd.txt)`, or enter the current password, HIDE
 if ErrorLevel
 	return
 	
-unencpass := DraGon_Dec(encpass)
-if inputpass != %unencpass%
+;Hash the input data and compare with the stored hash
+datain := bcrypt_sha256(datain)
+if datain != %hash%
 {
 	MsgBox, 16, Bad Password!, Bad password!
 	return
@@ -1364,10 +1364,10 @@ while ((adminpass != adminpass2) || (adminpass = ""))
 	}
 }
 
-;Encrypt and write to file
-encpass := DraGon_Enc(adminpass)
+; Hash and write to file
+hash := bcrypt_sha256(adminpass)
 FileDelete, %configdir%\mppwd.txt
-FileAppend, %encpass%, %configdir%\mppwd.txt
+FileAppend, %hash%, %configdir%\mppwd.txt
 MsgBox, New password set!
 return
 
@@ -4179,40 +4179,80 @@ setupVars(configloc, configdir)
 	return
 }
 
-;Encryption and Decryption functions, created by MasterFocus and Dra_Gon: https://autohotkey.com/board/topic/19062-encryptdecrypt-your-passcode/
-;These aren't perfect but we're not exactly dealing with Bank details here. It's enough to make the text file password unreadable by humans!
-DraGon_Enc(mystring)
+; Just because we're not a bank doesn't mean we should compromise on security
+; https://github.com/jNizM/AHK_CNG/blob/master/src/hash/func/bcrypt_sha256.ahk
+bcrypt_sha256(string, encoding := "utf-8")
 {
-  Random,, %A_now%
-  Random, pe_rand1, 2,  6
-  Random, pe_rand2, 4,  7
-  Random, pe_rand3, 10, 90
+    static BCRYPT_SHA256_ALGORITHM := "SHA256"
+    static BCRYPT_OBJECT_LENGTH    := "ObjectLength"
+    static BCRYPT_HASH_LENGTH      := "HashDigestLength"
 
-  allstr := pe_rand1
+	try
+	{
+		; loads the specified module into the address space of the calling process
+		if !(hBCRYPT := DllCall("LoadLibrary", "str", "bcrypt.dll", "ptr"))
+			throw Exception("Failed to load bcrypt.dll", -1)
 
-  Loop, parse, mystring
-    allstr .= (((asc(A_LoopField)+pe_rand1)*pe_rand2)+pe_rand3)
+		; open an algorithm handle
+		if (NT_STATUS := DllCall("bcrypt\BCryptOpenAlgorithmProvider", "ptr*", hAlg, "ptr", &BCRYPT_SHA256_ALGORITHM, "ptr", 0, "uint", 0) != 0)
+			throw Exception("BCryptOpenAlgorithmProvider: " NT_STATUS, -1)
 
-  Return chr(SubStr(pe_rand3,0)+64) . allstr . pe_rand2 . chr(SubStr(pe_rand3,1,1)+64)
+		; calculate the size of the buffer to hold the hash object
+		if (NT_STATUS := DllCall("bcrypt\BCryptGetProperty", "ptr", hAlg, "ptr", &BCRYPT_OBJECT_LENGTH, "uint*", cbHashObject, "uint", 4, "uint*", cbData, "uint", 0) != 0)
+			throw Exception("BCryptGetProperty: " NT_STATUS, -1)
+
+		; allocate the hash object
+		VarSetCapacity(pbHashObject, cbHashObject, 0)
+		;	throw Exception("Memory allocation failed", -1)
+
+		; calculate the length of the hash
+		if (NT_STATUS := DllCall("bcrypt\BCryptGetProperty", "ptr", hAlg, "ptr", &BCRYPT_HASH_LENGTH, "uint*", cbHash, "uint", 4, "uint*", cbData, "uint", 0) != 0)
+			throw Exception("BCryptGetProperty: " NT_STATUS, -1)
+
+		; allocate the hash buffer
+		VarSetCapacity(pbHash, cbHash, 0)
+		;	throw Exception("Memory allocation failed", -1)
+
+		; create a hash
+		if (NT_STATUS := DllCall("bcrypt\BCryptCreateHash", "ptr", hAlg, "ptr*", hHash, "ptr", &pbHashObject, "uint", cbHashObject, "ptr", 0, "uint", 0, "uint", 0) != 0)
+			throw Exception("BCryptCreateHash: " NT_STATUS, -1)
+
+		; hash some data
+		VarSetCapacity(pbInput, (StrPut(string, encoding) - 1) * ((encoding = "utf-16" || encoding = "cp1200") ? 2 : 1), 0) && cbInput := StrPut(string, &pbInput, encoding) - 1
+		if (NT_STATUS := DllCall("bcrypt\BCryptHashData", "ptr", hHash, "ptr", &pbInput, "uint", cbInput, "uint", 0) != 0)
+			throw Exception("BCryptHashData: " NT_STATUS, -1)
+
+		; close the hash
+		if (NT_STATUS := DllCall("bcrypt\BCryptFinishHash", "ptr", hHash, "ptr", &pbHash, "uint", cbHash, "uint", 0) != 0)
+			throw Exception("BCryptFinishHash: " NT_STATUS, -1)
+
+		loop % cbHash
+			hash .= Format("{:02x}", NumGet(pbHash, A_Index - 1, "uchar"))
+	}
+	catch exception
+	{
+		; represents errors that occur during application execution
+		throw Exception
+	}
+	finally
+	{
+		; cleaning up resources
+		if (pbInput)
+			VarSetCapacity(pbInput, 0)
+		if (hHash)
+			DllCall("bcrypt\BCryptDestroyHash", "ptr", hHash)
+		if (pbHash)
+			VarSetCapacity(pbHash, 0)
+		if (pbHashObject)
+			VarSetCapacity(pbHashObject, 0)
+		if (hAlg)
+			DllCall("bcrypt\BCryptCloseAlgorithmProvider", "ptr", hAlg, "uint", 0)
+		if (hBCRYPT)
+			DllCall("FreeLibrary", "ptr", hBCRYPT)
+	}
+
+	return hash
 }
-
-DraGon_Dec(allstr)
-{
-  pd_rand3 := ( asc(SubStr(allstr,0)) - 64 ) . ( asc(SubStr(allstr,1,1)) - 64 )
-  pd_rand1 := SubStr(allstr,2,1)
-  pd_rand2 := SubStr(allstr,-1,1)
-
-  allstr := SubStr(allstr,3,StrLen(allstr)-2)
-
-  Loop, % StrLen(allstr)/3
-  {
-    ps_word .= chr((((SubStr(allstr,1,3)-pd_rand3)/pd_rand2)-pd_rand1))
-    allstr := SubStr(allstr,4)
-  }
- 
-  Return ps_word
-}
-
 ;My mod update function. This works alongside 'cfwidget.com' to find new versions and mods and then download them to the appropriate directory, ready for the main program to copy them into the instance later/when needed.
 modsUpdate(modfilesloc)
 {
