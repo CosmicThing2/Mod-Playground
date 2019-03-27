@@ -29,7 +29,7 @@ Registers can optionally use a different location.
 
 Other settings:
 - Allows access only at certain times. Only recommended in LAN environments, allows controlling when users can launch the program. If outside of the allowed time, the administrator password will be requested.
-- Force offline mode. This will edit the accounts file in MultiMC to force it to launch in Offline mode. This means that users will be unable to play Minecraft online and/or join any online servers. Useful in schools where students may not be allowed to play online for safeguarding reasons. See (below)[https://github.com/CosmicThing2/Mod-Playground/blob/beta/README.md#offline-mode] for more information as this requires a bit of setup.
+- Force offline mode. This will edit the accounts file in MultiMC to force it to launch in Offline mode. This means that users will be unable to play Minecraft online and/or join any online servers. Useful in schools where students may not be allowed to play online for safeguarding reasons. See [below](https://github.com/CosmicThing2/Mod-Playground/blob/beta/README.md#offline-mode) for more information as this requires a bit of setup.
 
 ## Offline Mode
 
