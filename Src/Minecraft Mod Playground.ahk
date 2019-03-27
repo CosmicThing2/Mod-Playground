@@ -51,18 +51,6 @@ configloc = C:\Program Files (x86)\Mod Playground\cfg.ini ;Default location of t
 configdir = C:\Program Files (x86)\Mod Playground ;Default config directory
 customusername = %A_UserName% ;Username to use for the player (if forcing offline mode)
 
-;Is it 'minecraft' or '.minecraft'?
-IfExist, %multimcfolderloc%\instances\%neededmcver%\minecraft
-	minecraftdirtype = minecraft 
-else
-	minecraftdirtype = .minecraft
-
-;Is it 'minecraft' or '.minecraft' on the server?
-IfExist, %mclocation%\%version%\minecraft
-	serverdirtype = minecraft
-else
-	serverdirtype = .minecraft
-
 ;Variable defaults used in the program, do not ever change these
 newinstall = 0 ;Used to detect if minecraft has been installed recently or not. If it has, we don't need to bother wiping all mods/configs from a previous run
 loadsave = 0 ;Used to detect if the user has already saved/loaded or not. If they haven't, we need to prompt them to ask if they want to save/load etc
@@ -191,6 +179,18 @@ else
 
 ;Setup needed variables, reading from the config file
 setupVars(configloc, configdir)
+
+;Is it 'minecraft' or '.minecraft'?
+IfExist, %multimcfolderloc%\instances\%version%\minecraft
+	minecraftdirtype = minecraft 
+else
+	minecraftdirtype = .minecraft
+
+;Is it 'minecraft' or '.minecraft' on the server?
+IfExist, %mclocation%\%version%\minecraft
+	serverdirtype = minecraft
+else
+	serverdirtype = .minecraft
 
 ;Read the admin password from 'mppwd.txt'
 FileReadLine, hash, %configdir%\mppwd.txt, 1
@@ -1759,6 +1759,15 @@ else
 		if(SubStr(A_LoopField, 1, 1)) = "#"
 			continue
 		
+		if(SubStr(A_LoopField, 1, 1)) = "`r"
+			continue
+			
+		if(SubStr(A_LoopField, 1, 1)) = "`n"
+			continue
+			
+		if(SubStr(A_LoopField, 1, 1)) = ""
+			continue
+			
 		if(SubStr(A_LoopField, 1, 1)) =
 			continue
 		
@@ -2914,6 +2923,15 @@ else
 		if(SubStr(A_LoopField, 1, 1)) = "#"
 			continue
 		
+		if(SubStr(A_LoopField, 1, 1)) = "`r"
+			continue
+			
+		if(SubStr(A_LoopField, 1, 1)) = "`n"
+			continue
+			
+		if(SubStr(A_LoopField, 1, 1)) = ""
+			continue
+			
 		if(SubStr(A_LoopField, 1, 1)) =
 			continue
 		
@@ -3567,6 +3585,7 @@ exist(version, spacetolerance, multimcfolderloc)
 		return false
 }
 
+;addBackupWorlds(savefilesloc, version, 1, multimcfolderloc, 1, 0, minecraftdirtype)
 ;This function adds the users' worlds to the backup GUI and/or maps GUI, however it can also wipe the local saves if needed (e.g when the script is initially run e.g.)
 addBackupWorlds(savefilesloc, version, removedir, multimcfolderloc, backupsEnabled, uploadbutton, mcdirtype)
 {
