@@ -33,7 +33,7 @@ Other settings:
 
 ## Offline Mode
 
-Offline mode is a feature that blocks all online content by deliberately forcing MultiMC (and therefore Minecraft) into Offline Mode.　To do this however, you must ensure the following url is BLOCKED (via a firewall e.g.) for all users/students: https://authserver.mojang.com. 
+Offline mode is a feature that blocks all online content by deliberately forcing MultiMC (and therefore Minecraft) into Offline Mode. To do this however, you must ensure the following url is BLOCKED (via a firewall e.g.) for all users/students: https://authserver.mojang.com. 
 
 I'd also recommend ALLLOWING the following URLs to prevent issues later (as the game may need to download resources at certain points):
 - https://libraries.minecraft.net
