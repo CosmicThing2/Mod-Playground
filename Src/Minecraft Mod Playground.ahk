@@ -1843,8 +1843,6 @@ if legacymap = true
 	IfMsgBox, Cancel
 		return
 	
-
-	
 	;If they're happy with it, disable buttons to prevent the user launching minecraft while it's still trying to download their map. Yep, this was a problem....
 	GuiControl, Disable, MapDL
 	GuiControl, 2:, Launch, Launching Minecraft...
