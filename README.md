@@ -24,7 +24,7 @@ If updating, simply overwrite 'Minecraft Mod Playground.exe'. Note, for major up
 
 If you haven't run Mod Playground before or have specified a new location for the config file, it will ask you to run first time setup, this must be run as an administrator. The following directories and settings are available:
 - MultiMC location. Where should MultiMC be installed? I'd probably recommend C:\MultiMC in most cases. Mod Playground can copy this in for you automatically if the folder is available.
-- Resources for Mod Playground. Where should all the resources for the program be installed? This includes Mods, Maps, Images, Instances, the Configs and any Libraries. (For a home setup, this can just be your documents, but in a LAN you'd want to set this to some shared location that all clients can access). 
+- Resources for Mod Playground. Where should all the resources for the program be installed? This includes Mods, Maps, Images, Instances, the Configs and any Libraries. (For a home setup, this can just be your documents, but in a LAN you'd want to set this to some shared location that all clients can access, just read access is fine). 
 
 The features below are optional and all use the same directory location. For a home setup, this could just be your documents, but in a LAN you'd want to set this to some shared location that all clients can access. IMPORTANT! In a LAN, all clients need WRITE access to this location.
 
