@@ -26,18 +26,18 @@ If you haven't run Mod Playground before or have specified a new location for th
 - MultiMC location. Where should MultiMC be installed? I'd probably recommend C:\MultiMC in most cases. Mod Playground can copy this in for you automatically if the folder is available.
 - Resources for Mod Playground. Where should all the resources for the program be installed? This includes Mods, Maps, Images, Instances, the Configs and any Libraries. (For a home setup, this can just be your documents, but in a LAN you'd want to set this to some shared location that all clients can access). 
 
-The settings below all use the same location. For a home setup, this could just be your documents, but in a LAN you'd want to set this to some shared location that all clients can access, CLIENTS/MOD PLAYGROUND NEEDS WRITE ACCESS TO THIS DIRECTORY!).
+The features below are optional and all use the same directory location. For a home setup, this could just be your documents, but in a LAN you'd want to set this to some shared location that all clients can access. IMPORTANT! In a LAN, all clients need WRITE access to this location.
 
 - Enable autosaving mod lists. Mod Playground can remember what mods you selected last time you played and 'auto save' this to a file. It will then load this on every launch. Very helpful and recommended.
-- Enable backup manager. The Backup Manager loads after you've started the game. It allows your saves to also be copied to the location specified when you press the 'Backup' button on the manager. These saves will then be automatically downloaded on every launch, allowing for users to move around and have their saves follow them to any computer.
-- Enable usage stats. If enabled, will log what mods users select and save this data to 'modstats.ini' inside each users' folder. Allows the administrator to see what mods are popular!
+- Enable backup manager. The Backup Manager loads after you've started the game. It allows your saves to also be copied to the location specified when you press the 'Backup' button on the manager. These saves will then be automatically downloaded on every launch, allowing for users to move around and have their saves follow them to any computer. Unnecessary on a home setup but potentially very useful in a LAN environment.
+- Enable usage stats. If enabled, will log what mods users select and save this data to 'modstats.ini' inside each users' folder. Allows the administrator to see what mods are popular! Completely pointless in a home setup and only recommended in a LAN environment.
 
 Registers can optionally use a different location.
 - Enable registers. This will log every user that launches Mod Playground including their username, the time and date, the computer they launched it on and whether they were allowed to play, bypassed with the admin password or were blocked. Only recommended for LAN environments.
 
 Other settings:
-- Allows access only at certain times. Only recommended in LAN environments, allows controlling when users can launch the program. If outside of the allowed time, the administrator password will be requested.
-- Force offline mode. This will edit the accounts file in MultiMC to force it to launch in Offline mode. This means that users will be unable to play Minecraft online and/or join any online servers. Useful in schools where students may not be allowed to play online for safeguarding reasons. See [below](https://github.com/CosmicThing2/Mod-Playground/blob/beta/README.md#offline-mode) for more information as this requires a bit of setup.
+- Allows access only at certain times. Only recommended in LAN environments; allows controlling when users can launch the program. If outside of the allowed time, the administrator password will be requested.
+- Force offline mode. This will edit the accounts file in MultiMC to force it to launch in Offline mode. This means that users will be unable to play Minecraft online and/or join any online servers. Useful in schools where students may not be allowed to play online for safety reasons. See [below](https://github.com/CosmicThing2/Mod-Playground/blob/beta/README.md#offline-mode) for more information as this requires a bit of setup.
 
 ## Offline Mode
 
