@@ -247,8 +247,11 @@ if Timelock = 1
 }
 
 ;If they're allowed to play at this time also write this to the register file
-if ((RegistersEnabled = 1) && (writeagain = True))
-	Iniwrite, %version% on %A_ComputerName% (%time%) - Allowed, %registerloc%\%A_MM%-%A_YYYY%.ini, %A_DD%/%A_MM%, %A_UserName%
+if RegistersEnabled = 1
+{
+	if writeagain = True
+		Iniwrite, %version% on %A_ComputerName% (%time%) - Allowed, %registerloc%\%A_MM%-%A_YYYY%.ini, %A_DD%/%A_MM%, %A_UserName%
+}
 
 ;Firstly ensure the MultiMC folder exists. If it doesn't, kick the user out straightaway UNLESS they enter the admin password
 IfNotExist, %multimcfolderloc%
@@ -740,480 +743,480 @@ Loop, Parse, modsAll, `,,
 		;Create Shortcuts
 		if A_LoopField = AbyssalCraft
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/abyssalcraft, %mploc%\Mods\%A_LoopField%\abyssalcraft.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/abyssalcraft-integration, %mploc%\Mods\%A_LoopField%\abyssalcraft-integration.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/abyssalcraft, %mploc%\Mods\%A_LoopField%\53686.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/abyssalcraft-integration, %mploc%\Mods\%A_LoopField%\234851.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Actually Additions
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/actually-additions, %mploc%\Mods\%A_LoopField%\actually-additions.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/actually-additions, %mploc%\Mods\%A_LoopField%\228404.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Advanced Generators
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/advanced-generators, %mploc%\Mods\%A_LoopField%\advanced-generators.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/bdlib, %mploc%\Mods\%A_LoopField%\bdlib.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/advanced-generators, %mploc%\Mods\%A_LoopField%\223622.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/bdlib, %mploc%\Mods\%A_LoopField%\70496.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Aether 2
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/the-aether-ii, %mploc%\Mods\%A_LoopField%\the-aether-ii.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/the-aether-ii, %mploc%\Mods\%A_LoopField%\223796.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Animania
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/animania, %mploc%\Mods\%A_LoopField%\animania.url, InternetShortcut, URL
-			IniWrite, https://www.curseforge.com/minecraft/mc-mods/craftstudio-api, %mploc%\Mods\%A_LoopField%\craftstudio-api.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/animania, %mploc%\Mods\%A_LoopField%\261199.url, InternetShortcut, URL
+			IniWrite, https://www.curseforge.com/minecraft/mc-mods/craftstudio-api, %mploc%\Mods\%A_LoopField%\268704.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Applied Energistics
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/applied-energistics-2, %mploc%\Mods\%A_LoopField%\applied-energistics-2.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/applied-energistics-2, %mploc%\Mods\%A_LoopField%\223794.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Astral Sorcery
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/astral-sorcery, %mploc%\Mods\%A_LoopField%\astral-sorcery.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/baubles, %mploc%\Mods\%A_LoopField%\baubles.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/astral-sorcery, %mploc%\Mods\%A_LoopField%\241721.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/baubles, %mploc%\Mods\%A_LoopField%\227083.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Better Builders Wands
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/better-builders-wands, %mploc%\Mods\%A_LoopField%\better-builders-wands.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/better-builders-wands, %mploc%\Mods\%A_LoopField%\238403.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Betweenlands
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/angry-pixel-the-betweenlands-mod, %mploc%\Mods\%A_LoopField%\angry-pixel-the-betweenlands-mod.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/angry-pixel-the-betweenlands-mod, %mploc%\Mods\%A_LoopField%\243363.url, InternetShortcut, URL
 		}
 		else if A_LoopField = BiblioCraft
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/bibliocraft, %mploc%\Mods\%A_LoopField%\bibliocraft.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/bibliocraft, %mploc%\Mods\%A_LoopField%\228027.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Biomes O' Plenty
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/biomes-o-plenty, %mploc%\Mods\%A_LoopField%\biomes-o-plenty.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/biomes-o-plenty, %mploc%\Mods\%A_LoopField%\220318.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Blockcraftery
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/blockcraftery, %mploc%\Mods\%A_LoopField%\blockcraftery.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/mysticallib, %mploc%\Mods\%A_LoopField%\mysticallib.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/blockcraftery, %mploc%\Mods\%A_LoopField%\278882.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/mysticallib, %mploc%\Mods\%A_LoopField%\277064.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Blood Magic
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/blood-magic, %mploc%\Mods\%A_LoopField%\blood-magic.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/guide-api, %mploc%\Mods\%A_LoopField%\guide-api.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/blood-magic, %mploc%\Mods\%A_LoopField%\224791.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/guide-api, %mploc%\Mods\%A_LoopField%\228832.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Bonsai Trees
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/bonsai-trees, %mploc%\Mods\%A_LoopField%\bonsai-trees.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/bonsai-trees, %mploc%\Mods\%A_LoopField%\278993.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Botania
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/botania, %mploc%\Mods\%A_LoopField%\botania.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/baubles, %mploc%\Mods\%A_LoopField%\baubles.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/botania, %mploc%\Mods\%A_LoopField%\225643.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/baubles, %mploc%\Mods\%A_LoopField%\227083.url, InternetShortcut, URL
 		}
 		else if A_LoopField = BuildCraft
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/buildcraft, %mploc%\Mods\%A_LoopField%\buildcraft.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/buildcraft, %mploc%\Mods\%A_LoopField%\61811.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Chance Cubes
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/chance-cubes, %mploc%\Mods\%A_LoopField%\chance-cubes.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/chance-cubes, %mploc%\Mods\%A_LoopField%\233113.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Chisel 2
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/chisel, %mploc%\Mods\%A_LoopField%\chisel.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/ctm, %mploc%\Mods\%A_LoopField%\ctm.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/chisel, %mploc%\Mods\%A_LoopField%\235279.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/ctm, %mploc%\Mods\%A_LoopField%\267602.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Chisels and Bits
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/chisels-bits, %mploc%\Mods\%A_LoopField%\chisels-bits.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/chisels-bits, %mploc%\Mods\%A_LoopField%\231095.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Chococraft
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/chococraft-3, %mploc%\Mods\%A_LoopField%\chococraft-3.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/chococraft-3, %mploc%\Mods\%A_LoopField%\297854.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Colossal Chests
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/colossal-chests, %mploc%\Mods\%A_LoopField%\colossal-chests.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/cyclops-core, %mploc%\Mods\%A_LoopField%\cyclops-core.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/colossal-chests, %mploc%\Mods\%A_LoopField%\237875.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/cyclops-core, %mploc%\Mods\%A_LoopField%\232758.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Compact Machines
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/compact-machines, %mploc%\Mods\%A_LoopField%\compact-machines.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/compact-machines, %mploc%\Mods\%A_LoopField%\224218.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Cooking for Blockheads
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/cooking-for-blockheads, %mploc%\Mods\%A_LoopField%\cooking-for-blockheads.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/cooking-for-blockheads, %mploc%\Mods\%A_LoopField%\231484.url, InternetShortcut, URL
 		}
 		else if A_LoopField = CustomNPCs
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/custom-npcs, %mploc%\Mods\%A_LoopField%\custom-npcs.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/custom-npcs, %mploc%\Mods\%A_LoopField%\221826.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Cyclic
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/cyclic, %mploc%\Mods\%A_LoopField%\cyclic.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/cyclic, %mploc%\Mods\%A_LoopField%\239286.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Dark Utilities
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/dark-utilities, %mploc%\Mods\%A_LoopField%\dark-utilities.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/bookshelf, %mploc%\Mods\%A_LoopField%\bookshelf.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/dark-utilities, %mploc%\Mods\%A_LoopField%\242195.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/bookshelf, %mploc%\Mods\%A_LoopField%\228525.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Decocraft 2
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/decocraft2, %mploc%\Mods\%A_LoopField%\decocraft2.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/ptrlib, %mploc%\Mods\%A_LoopField%\ptrlib.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/decocraft2, %mploc%\Mods\%A_LoopField%\79616.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/ptrlib, %mploc%\Mods\%A_LoopField%\291499.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Dimensional Doors
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/dimensionaldoors, %mploc%\Mods\%A_LoopField%\dimensionaldoors.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/dimensionaldoors, %mploc%\Mods\%A_LoopField%\284876.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Earthworks
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/earthworks, %mploc%\Mods\%A_LoopField%\earthworks.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/earthworks, %mploc%\Mods\%A_LoopField%\255427.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Electroblobs Wizardry
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/electroblobs-wizardry, %mploc%\Mods\%A_LoopField%\electroblobs-wizardry.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/electroblobs-wizardry, %mploc%\Mods\%A_LoopField%\265642.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Ender Storage
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/ender-storage-1-8, %mploc%\Mods\%A_LoopField%\ender-storage-1-8.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/codechicken-lib-1-8, %mploc%\Mods\%A_LoopField%\codechicken-lib-1-8.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/ender-storage-1-8, %mploc%\Mods\%A_LoopField%\245174.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/codechicken-lib-1-8, %mploc%\Mods\%A_LoopField%\242818.url, InternetShortcut, URL
 		}
 		else if A_LoopField = EnderIO
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/ender-io, %mploc%\Mods\%A_LoopField%\ender-io.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/endercore, %mploc%\Mods\%A_LoopField%\endercore.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/ender-io, %mploc%\Mods\%A_LoopField%\64578.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/endercore, %mploc%\Mods\%A_LoopField%\231868.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Environmental Tech
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/environmental-tech, %mploc%\Mods\%A_LoopField%\environmental-tech.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/valkyrielib, %mploc%\Mods\%A_LoopField%\valkyrielib.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/environmental-tech, %mploc%\Mods\%A_LoopField%\245453.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/valkyrielib, %mploc%\Mods\%A_LoopField%\245480.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Ex Nihilo
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/ex-nihilo-creatio, %mploc%\Mods\%A_LoopField%\ex-nihilo-creatio.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/shadowfacts-forgelin, %mploc%\Mods\%A_LoopField%\shadowfacts-forgelin.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/ex-nihilo-creatio, %mploc%\Mods\%A_LoopField%\274456.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/shadowfacts-forgelin, %mploc%\Mods\%A_LoopField%\248453.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Exotic Birds
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/exotic-birds, %mploc%\Mods\%A_LoopField%\exotic-birds.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/exotic-birds, %mploc%\Mods\%A_LoopField%\242830.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Extra Utilities 2
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/extra-utilities, %mploc%\Mods\%A_LoopField%\extra-utilities.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/extra-utilities, %mploc%\Mods\%A_LoopField%\225561.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Extreme Reactors
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/extreme-reactors, %mploc%\Mods\%A_LoopField%\extreme-reactors.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/zerocore, %mploc%\Mods\%A_LoopField%\zerocore.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/extreme-reactors, %mploc%\Mods\%A_LoopField%\250277.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/zerocore, %mploc%\Mods\%A_LoopField%\247921.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Fairy Lights
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/fairy-lights, %mploc%\Mods\%A_LoopField%\fairy-lights.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/fairy-lights, %mploc%\Mods\%A_LoopField%\233342.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Ferdinands Flowers
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/ferdinands-flowers, %mploc%\Mods\%A_LoopField%\ferdinands-flowers.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/ferdinands-flowers, %mploc%\Mods\%A_LoopField%\282077.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Forestry
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/forestry, %mploc%\Mods\%A_LoopField%\forestry.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/forestry, %mploc%\Mods\%A_LoopField%\59751.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Hardcore Darkness
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/hardcore-darkness, %mploc%\Mods\%A_LoopField%\hardcore-darkness.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/hardcore-darkness, %mploc%\Mods\%A_LoopField%\225957.url, InternetShortcut, URL
 		}
 		else if A_LoopField = HarvestCraft
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/pams-harvestcraft, %mploc%\Mods\%A_LoopField%\pams-harvestcraft.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/just-enough-harvestcraft, %mploc%\Mods\%A_LoopField%\just-enough-harvestcraft.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/pams-harvestcraft, %mploc%\Mods\%A_LoopField%\221857.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/just-enough-harvestcraft, %mploc%\Mods\%A_LoopField%\267939.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Hats
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/hats, %mploc%\Mods\%A_LoopField%\hats.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/ichunutil, %mploc%\Mods\%A_LoopField%\ichunutil.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/hats, %mploc%\Mods\%A_LoopField%\229073.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/ichunutil, %mploc%\Mods\%A_LoopField%\229060.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Heroes Expansion
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/heroesexpansion, %mploc%\Mods\%A_LoopField%\heroesexpansion.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/lucraft-core, %mploc%\Mods\%A_LoopField%\lucraft-core.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/heroesexpansion, %mploc%\Mods\%A_LoopField%\267462.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/lucraft-core, %mploc%\Mods\%A_LoopField%\230651.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Heroic Armoury
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/heroic-armory, %mploc%\Mods\%A_LoopField%\heroic-armory.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/heroic-armory, %mploc%\Mods\%A_LoopField%\301846.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Immersive Engineering
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/immersive-engineering, %mploc%\Mods\%A_LoopField%\immersive-engineering.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/immersive-petroleum, %mploc%\Mods\%A_LoopField%\immersive-petroleum.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/immersive-tech, %mploc%\Mods\%A_LoopField%\immersive-tech.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/immersive-engineering, %mploc%\Mods\%A_LoopField%\231951.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/immersive-petroleum, %mploc%\Mods\%A_LoopField%\268250.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/immersive-tech, %mploc%\Mods\%A_LoopField%\274159.url, InternetShortcut, URL
 		}
 		else if A_LoopField = IndustrialCraft
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/industrial-craft, %mploc%\Mods\%A_LoopField%\industrial-craft.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/industrial-craft, %mploc%\Mods\%A_LoopField%\242638.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Integrated Dynamics
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/integrated-dynamics, %mploc%\Mods\%A_LoopField%\integrated-dynamics.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/cyclops-core, %mploc%\Mods\%A_LoopField%\cyclops-core.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/common-capabilities, %mploc%\Mods\%A_LoopField%\common-capabilities.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/integrated-dynamics, %mploc%\Mods\%A_LoopField%\236307.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/cyclops-core, %mploc%\Mods\%A_LoopField%\232758.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/common-capabilities, %mploc%\Mods\%A_LoopField%\247007.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Industrial Foregoing
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/industrial-foregoing, %mploc%\Mods\%A_LoopField%\industrial-foregoing.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/integration-foregoing, %mploc%\Mods\%A_LoopField%\integration-foregoing.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/tesla-core-lib, %mploc%\Mods\%A_LoopField%\tesla-core-lib.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/shadowfacts-forgelin, %mploc%\Mods\%A_LoopField%\shadowfacts-forgelin.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/industrial-foregoing, %mploc%\Mods\%A_LoopField%\266515.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/integration-foregoing, %mploc%\Mods\%A_LoopField%\277938.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/tesla-core-lib, %mploc%\Mods\%A_LoopField%\254602.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/shadowfacts-forgelin, %mploc%\Mods\%A_LoopField%\248453.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Inventory Pets
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/inventory-pets, %mploc%\Mods\%A_LoopField%\inventory-pets.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/inventory-pets, %mploc%\Mods\%A_LoopField%\229380.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Iron Chests
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/iron-chests, %mploc%\Mods\%A_LoopField%\iron-chests.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/iron-chests, %mploc%\Mods\%A_LoopField%\228756.url, InternetShortcut, URL
 		}
 		else if A_LoopField = JourneyMap
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/journeymap, %mploc%\Mods\%A_LoopField%\journeymap.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/journeymap, %mploc%\Mods\%A_LoopField%\32274.url, InternetShortcut, URL
 		}
 		else if A_LoopField = JurassiCraft
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/jurassicraft, %mploc%\Mods\%A_LoopField%\jurassicraft.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/llibrary, %mploc%\Mods\%A_LoopField%\llibrary.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/jurassicraft, %mploc%\Mods\%A_LoopField%\226719.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/llibrary, %mploc%\Mods\%A_LoopField%\243298.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Just a few fish
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/just-a-few-fish, %mploc%\Mods\%A_LoopField%\just-a-few-fish.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/just-a-few-fish, %mploc%\Mods\%A_LoopField%\235261.url, InternetShortcut, URL
 		}
 		else if A_LoopField = LAN Server Extended
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/lanserverextended, %mploc%\Mods\%A_LoopField%\lanserverextended.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/lanserverextended, %mploc%\Mods\%A_LoopField%\256472.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Lost Cities
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/the-lost-cities, %mploc%\Mods\%A_LoopField%\the-lost-cities.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/the-lost-cities, %mploc%\Mods\%A_LoopField%\269024.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Malisis Doors
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/malisisdoors, %mploc%\Mods\%A_LoopField%\malisisdoors.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/malisiscore, %mploc%\Mods\%A_LoopField%\malisiscore.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/malisisdoors, %mploc%\Mods\%A_LoopField%\223891.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/malisiscore, %mploc%\Mods\%A_LoopField%\223896.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Mekanism
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/mekanism, %mploc%\Mods\%A_LoopField%\mekanism.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/mekanism, %mploc%\Mods\%A_LoopField%\268560.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Millenaire
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/millenaire, %mploc%\Mods\%A_LoopField%\millenaire.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/millenaire, %mploc%\Mods\%A_LoopField%\270871.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Minecraft Comes Alive
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/minecraft-comes-alive-mca, %mploc%\Mods\%A_LoopField%\minecraft-comes-alive-mca.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/radixcore, %mploc%\Mods\%A_LoopField%\radixcore.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/minecraft-comes-alive-mca, %mploc%\Mods\%A_LoopField%\59693.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/radixcore, %mploc%\Mods\%A_LoopField%\77286.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Minewatch
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/minewatch, %mploc%\Mods\%A_LoopField%\minewatch.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/minewatch, %mploc%\Mods\%A_LoopField%\265838.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Morph
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/morph, %mploc%\Mods\%A_LoopField%\morph.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/ichunutil, %mploc%\Mods\%A_LoopField%\ichunutil.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/morph, %mploc%\Mods\%A_LoopField%\229080.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/ichunutil, %mploc%\Mods\%A_LoopField%\229060.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Mr Crayfish's Furniture
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/mrcrayfish-furniture-mod, %mploc%\Mods\%A_LoopField%\mrcrayfish-furniture-mod.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/mrcrayfish-furniture-mod, %mploc%\Mods\%A_LoopField%\55438.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Mr Crayfish's Guns
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/mrcrayfishs-gun-mod, %mploc%\Mods\%A_LoopField%\mrcrayfishs-gun-mod.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/obfuscate, %mploc%\Mods\%A_LoopField%\obfuscate.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/mrcrayfishs-gun-mod, %mploc%\Mods\%A_LoopField%\289479.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/obfuscate, %mploc%\Mods\%A_LoopField%\289380.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Mr Crayfish's Vehicles
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/mrcrayfishs-vehicle-mod, %mploc%\Mods\%A_LoopField%\mrcrayfishs-vehicle-mod.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/obfuscate, %mploc%\Mods\%A_LoopField%\obfuscate.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/mrcrayfishs-vehicle-mod, %mploc%\Mods\%A_LoopField%\286660.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/obfuscate, %mploc%\Mods\%A_LoopField%\289380.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Mystical Agriculture
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/mystical-agriculture, %mploc%\Mods\%A_LoopField%\mystical-agriculture.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/cucumber, %mploc%\Mods\%A_LoopField%\cucumber.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/mystical-agriculture, %mploc%\Mods\%A_LoopField%\246640.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/cucumber, %mploc%\Mods\%A_LoopField%\272335.url, InternetShortcut, URL
 		}
 		else if A_LoopField = NetherEx
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/netherex, %mploc%\Mods\%A_LoopField%\netherex.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/libraryex, %mploc%\Mods\%A_LoopField%\libraryex.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/netherex, %mploc%\Mods\%A_LoopField%\248039.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/libraryex, %mploc%\Mods\%A_LoopField%\298965.url, InternetShortcut, URL
 		}
 		else if A_LoopField = OpenBlocks
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/openblocks, %mploc%\Mods\%A_LoopField%\openblocks.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/openmodslib, %mploc%\Mods\%A_LoopField%\openmodslib.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/openblocks, %mploc%\Mods\%A_LoopField%\228816.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/openmodslib, %mploc%\Mods\%A_LoopField%\228815.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Ore Excavation
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/ore-excavation, %mploc%\Mods\%A_LoopField%\ore-excavation.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/ore-excavation, %mploc%\Mods\%A_LoopField%\250898.url, InternetShortcut, URL
 		}
 		else if A_LoopField = PneumaticCraft
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/pneumaticcraft-repressurized, %mploc%\Mods\%A_LoopField%\pneumaticcraft-repressurized.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/pneumaticcraft-repressurized, %mploc%\Mods\%A_LoopField%\281849.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Pokecube
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/pokecube-aoi, %mploc%\Mods\%A_LoopField%\pokecube-aoi.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/pokecube-aoi, %mploc%\Mods\%A_LoopField%\285121.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Portal Gun
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/portal-gun, %mploc%\Mods\%A_LoopField%\portal-gun.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/ichunutil, %mploc%\Mods\%A_LoopField%\ichunutil.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/portal-gun, %mploc%\Mods\%A_LoopField%\229084.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/ichunutil, %mploc%\Mods\%A_LoopField%\229060.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Project Red
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/codechicken-lib-1-8, %mploc%\Mods\%A_LoopField%\codechicken-lib-1-8.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/forge-multipart-cbe, %mploc%\Mods\%A_LoopField%\forge-multipart-cbe.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/mrtjpcore, %mploc%\Mods\%A_LoopField%\mrtjpcore.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/project-red-base, %mploc%\Mods\%A_LoopField%\project-red-base.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/project-red-fabrication, %mploc%\Mods\%A_LoopField%\project-red-fabrication.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/project-red-integration, %mploc%\Mods\%A_LoopField%\project-red-integration.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/project-red-lighting, %mploc%\Mods\%A_LoopField%\project-red-lighting.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/codechicken-lib-1-8, %mploc%\Mods\%A_LoopField%\242818.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/forge-multipart-cbe, %mploc%\Mods\%A_LoopField%\258426.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/mrtjpcore, %mploc%\Mods\%A_LoopField%\229002.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/project-red-base, %mploc%\Mods\%A_LoopField%\228702.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/project-red-fabrication, %mploc%\Mods\%A_LoopField%\230111.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/project-red-integration, %mploc%\Mods\%A_LoopField%\229045.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/project-red-lighting, %mploc%\Mods\%A_LoopField%\229046.url, InternetShortcut, URL
 		}
 		else if A_LoopField = ProjectE
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/projecte, %mploc%\Mods\%A_LoopField%\projecte.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/projecte, %mploc%\Mods\%A_LoopField%\226410.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Psi
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/psi, %mploc%\Mods\%A_LoopField%\psi.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/autoreglib, %mploc%\Mods\%A_LoopField%\autoreglib.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/psi, %mploc%\Mods\%A_LoopField%\241665.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/autoreglib, %mploc%\Mods\%A_LoopField%\250363.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Quark
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/quark, %mploc%\Mods\%A_LoopField%\quark.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/autoreglib, %mploc%\Mods\%A_LoopField%\autoreglib.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/quark, %mploc%\Mods\%A_LoopField%\243121.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/autoreglib, %mploc%\Mods\%A_LoopField%\250363.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Recurrent Complex
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/recurrent-complex, %mploc%\Mods\%A_LoopField%\recurrent-complex.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/ivtoolkit, %mploc%\Mods\%A_LoopField%\ivtoolkit.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/recurrent-complex, %mploc%\Mods\%A_LoopField%\223150.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/ivtoolkit, %mploc%\Mods\%A_LoopField%\224535.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Refined Storage
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/refined-storage, %mploc%\Mods\%A_LoopField%\refined-storage.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/refined-storage, %mploc%\Mods\%A_LoopField%\243076.url, InternetShortcut, URL
 		}
 		else if A_LoopField = RFTools
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/rftools, %mploc%\Mods\%A_LoopField%\rftools.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/rftools-dimensions, %mploc%\Mods\%A_LoopField%\rftools-dimensions.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/mcjtylib, %mploc%\Mods\%A_LoopField%\mcjtylib.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/rftools, %mploc%\Mods\%A_LoopField%\224641.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/rftools-dimensions, %mploc%\Mods\%A_LoopField%\240950.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/mcjtylib, %mploc%\Mods\%A_LoopField%\233105.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Roguelike Dungeons
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/roguelike-dungeons, %mploc%\Mods\%A_LoopField%\roguelike-dungeons.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/roguelike-dungeons, %mploc%\Mods\%A_LoopField%\221585.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Roots 2
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/roots, %mploc%\Mods\%A_LoopField%\roots.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/roots, %mploc%\Mods\%A_LoopField%\246183.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Secret Rooms
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/secretroomsmod, %mploc%\Mods\%A_LoopField%\secretroomsmod.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/secretroomsmod, %mploc%\Mods\%A_LoopField%\59652.url, InternetShortcut, URL
 		}
 		else if A_LoopField = SecurityCraft
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/security-craft, %mploc%\Mods\%A_LoopField%\security-craft.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/security-craft, %mploc%\Mods\%A_LoopField%\64760.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Serene Seasons
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/serene-seasons, %mploc%\Mods\%A_LoopField%\serene-seasons.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/serene-seasons, %mploc%\Mods\%A_LoopField%\291874.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Simple Teleporters
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/simple-teleporters, %mploc%\Mods\%A_LoopField%\simple-teleporters.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/simple-teleporters, %mploc%\Mods\%A_LoopField%\241588.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Simply Jetpacks
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/simply-jetpacks-2, %mploc%\Mods\%A_LoopField%\simply-jetpacks-2.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/redstone-flux, %mploc%\Mods\%A_LoopField%\redstone-flux.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/simply-jetpacks-2, %mploc%\Mods\%A_LoopField%\251792.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/redstone-flux, %mploc%\Mods\%A_LoopField%\270789.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Spartan Shields
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/spartan-shields, %mploc%\Mods\%A_LoopField%\spartan-shields.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/spartan-shields, %mploc%\Mods\%A_LoopField%\252239.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Speedster Heroes
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/speedster-heroes, %mploc%\Mods\%A_LoopField%\speedster-heroes.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/lucraft-core, %mploc%\Mods\%A_LoopField%\lucraft-core.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/speedster-heroes, %mploc%\Mods\%A_LoopField%\252318.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/lucraft-core, %mploc%\Mods\%A_LoopField%\230651.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Storage Drawers
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/storage-drawers, %mploc%\Mods\%A_LoopField%\storage-drawers.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/chameleon, %mploc%\Mods\%A_LoopField%\chameleon.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/storage-drawers, %mploc%\Mods\%A_LoopField%\223852.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/chameleon, %mploc%\Mods\%A_LoopField%\230497.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Streams
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/streams, %mploc%\Mods\%A_LoopField%\streams.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/farseek, %mploc%\Mods\%A_LoopField%\farseek.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/streams, %mploc%\Mods\%A_LoopField%\229769.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/farseek, %mploc%\Mods\%A_LoopField%\229708.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Tardis
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/new-tardis-mod, %mploc%\Mods\%A_LoopField%\new-tardis-mod.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/new-tardis-mod, %mploc%\Mods\%A_LoopField%\290247.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Terrarium
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/terrarium, %mploc%\Mods\%A_LoopField%\terrarium.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/terrarium, %mploc%\Mods\%A_LoopField%\310941.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Thaumcraft
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/thaumcraft, %mploc%\Mods\%A_LoopField%\thaumcraft.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/baubles, %mploc%\Mods\%A_LoopField%\baubles.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/thaumcraft, %mploc%\Mods\%A_LoopField%\223628.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/baubles, %mploc%\Mods\%A_LoopField%\227083.url, InternetShortcut, URL
 		}
 		else if A_LoopField = The Erebus
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/the-erebus, %mploc%\Mods\%A_LoopField%\the-erebus.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/the-erebus, %mploc%\Mods\%A_LoopField%\220698.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Thermal Expansion
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/codechicken-lib-1-8, %mploc%\Mods\%A_LoopField%\codechicken-lib-1-8.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/cofh-world, %mploc%\Mods\%A_LoopField%\cofh-world.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/cofhcore, %mploc%\Mods\%A_LoopField%\cofhcore.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/redstone-flux, %mploc%\Mods\%A_LoopField%\redstone-flux.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/thermal-foundation, %mploc%\Mods\%A_LoopField%\thermal-foundation.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/thermalexpansion, %mploc%\Mods\%A_LoopField%\thermalexpansion.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/codechicken-lib-1-8, %mploc%\Mods\%A_LoopField%\242818.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/cofh-world, %mploc%\Mods\%A_LoopField%\271384.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/cofhcore, %mploc%\Mods\%A_LoopField%\69162.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/redstone-flux, %mploc%\Mods\%A_LoopField%\270789.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/thermal-foundation, %mploc%\Mods\%A_LoopField%\222880.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/thermalexpansion, %mploc%\Mods\%A_LoopField%\69163.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Tinkers Construct
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/tinkers-construct, %mploc%\Mods\%A_LoopField%\tinkers-construct.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/mantle, %mploc%\Mods\%A_LoopField%\mantle.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/tinkers-construct, %mploc%\Mods\%A_LoopField%\74072.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/mantle, %mploc%\Mods\%A_LoopField%\74924.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Totemic
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/totemic, %mploc%\Mods\%A_LoopField%\totemic.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/totemic, %mploc%\Mods\%A_LoopField%\237541.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Twilight Forest
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/the-twilight-forest, %mploc%\Mods\%A_LoopField%\the-twilight-forest.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/the-twilight-forest, %mploc%\Mods\%A_LoopField%\227639.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Vampirism
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/vampirism-become-a-vampire, %mploc%\Mods\%A_LoopField%\vampirism-become-a-vampire.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/vampirism-integrations, %mploc%\Mods\%A_LoopField%\vampirism-integrations.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/vampirism-become-a-vampire, %mploc%\Mods\%A_LoopField%\233029.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/vampirism-integrations, %mploc%\Mods\%A_LoopField%\282433.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Viescraft Airships
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/viescraft-airships, %mploc%\Mods\%A_LoopField%\viescraft-airships.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/viescraft-airships, %mploc%\Mods\%A_LoopField%\246795.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Weeping Angels
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/weeping-angels-mod, %mploc%\Mods\%A_LoopField%\weeping-angels-mod.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/weeping-angels-mod, %mploc%\Mods\%A_LoopField%\291249.url, InternetShortcut, URL
 		}
 		else if A_LoopField = WorldEdit
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/worldedit, %mploc%\Mods\%A_LoopField%\worldedit.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/worldedit, %mploc%\Mods\%A_LoopField%\225608.url, InternetShortcut, URL
 		}
 		else if A_LoopField = XNet
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/xnet, %mploc%\Mods\%A_LoopField%\xnet.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/ynot, %mploc%\Mods\%A_LoopField%\ynot.url, InternetShortcut, URL
-			IniWrite, https://minecraft.curseforge.com/projects/mcjtylib, %mploc%\Mods\%A_LoopField%\mcjtylib.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/xnet, %mploc%\Mods\%A_LoopField%\260912.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/ynot, %mploc%\Mods\%A_LoopField%\283589.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/mcjtylib, %mploc%\Mods\%A_LoopField%\233105.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Xtones
 		{
-			IniWrite, https://minecraft.curseforge.com/projects/xtones, %mploc%\Mods\%A_LoopField%\xtones.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/xtones, %mploc%\Mods\%A_LoopField%\257573.url, InternetShortcut, URL
 		}
 	}
 }
@@ -4270,7 +4273,8 @@ bcrypt_sha256(string, encoding := "utf-8")
 
 	return hash
 }
-;My mod update function. This works alongside 'cfwidget.com' to find new versions and mods and then download them to the appropriate directory, ready for the main program to copy them into the instance later/when needed.
+
+;My mod update function. This works alongside the Twitch API to find new versions and mods and then download them to the appropriate directory, ready for the main program to copy them into the instance later/when needed.
 modsUpdate(modfilesloc)
 {
 	;Variable that contains all data to write to the 'UpdateLog.txt' at the end of the program
@@ -4349,13 +4353,13 @@ modsUpdate(modfilesloc)
 					searchver2 = "1.12.1"
 					urlver = "url":
 					jarname = "name":
-					fullurl = https://api.cfwidget.com/minecraft/mc-mods/%modname%
+					;fullurl = https://api.cfwidget.com/minecraft/mc-mods/%modname%
+					fullurl = https://addons-ecs.forgesvc.net/api/v2/addon/%modname%
 					speechmark = "
 					;"
 					
 					;Used to count the number of attempts we've had to find the mod online. The script will give up if it tries 5 times and is still getting an 'error' response from the website API
 					i = 0
-					
 					
 					RetryGet:
 					
@@ -4365,6 +4369,7 @@ modsUpdate(modfilesloc)
 					whr.Send()
 					whr.WaitForResponse()
 					cursedata := whr.ResponseText
+					;"
 					
 					errortest := SubStr(cursedata, 3, 5)
 					if errortest = error
@@ -4373,7 +4378,7 @@ modsUpdate(modfilesloc)
 						{
 							Sleep 3000
 							if i = 3
-								fullurl = https://api.cfwidget.com/mc-mods/minecraft/%modname%
+								fullurl = https://addons-ecs.forgesvc.net/api/v2/addon/%modname%
 							i++
 							Goto, RetryGet
 						}
@@ -4385,17 +4390,30 @@ modsUpdate(modfilesloc)
 							break
 						}
 					}
-
 					
 					;BELOW IS A LOT OF FORMATTING TO TRY AND FIND THE CORRECT DOWNLOAD ID!
 
-					;Search all the text (from left to right) for the most recent 1.12.2 file
-					verpos := InStr(cursedata, searchver)
+					;Search all the text (from left to right) for the most recent files
+					latestFilesPos := InStr(cursedata, "gameVersionLatestFiles")
 					
-					;If there's no 1.12.2 file, try to search for a 1.12.1 file instead
-					if verpos = 0
+					;If there's no recent files, ditch the mod, possible issue with that mod?
+					if latestFilesPos = 0
 					{
-						verpos := InStr(cursedata, searchver2)
+						writetext := writetext . "`n" . "-Mod: " outsidedir ". File: " modname ". ERROR, I can't find the latest files for this mod? Is it still available? If this error is persistent for this mod, maybe change it to manual update."
+						break
+					}
+
+					;Cut the text from that point
+					cursedata := SubStr(cursedata, latestFilesPos)
+	
+					;Now search for the latest 1.12.2 file and cut from that point
+					verPos := InStr(cursedata, searchver)
+					cursedata := SubStr(cursedata, verPos)
+					
+					;If there's no 1.12.2 file, try a 1.12.1. It *might* work
+					if verPos = 0
+					{
+						verPos := InStr(cursedata, searchver2)
 						
 						;If we find a 1.12.1 file, mark this mod as 'old'. It *might* work!
 						if verpos != 0
@@ -4404,53 +4422,46 @@ modsUpdate(modfilesloc)
 						;If we still can't find a 1.12.1 file, give up. This mod won't be compatible!
 						else
 						{
-							writetext := writetext . "`n" . "-Mod: " outsidedir ". File: " modname ". ERROR, I can't find this file, maybe there's no 1.12.2 version? If this error is persistent for this mod, maybe change it to manual update."
+							writetext := writetext . "`n" . "-Mod: " outsidedir ". File: " modname ". ERROR, I can't find a 1.12.2 or 1.12.1 version of this mod! If this error is persistent for this mod, maybe change it to manual update."
 							break
 						}
 					}
-
-					;Cut the text from that point
-					cursedata := SubStr(cursedata, 1, verpos)
-
-					;Now search from right to left, for the closest URL
-					urlpos := (InStr(cursedata, urlver,,0) + 7)
-
-					;Cut backwards from that point
-					cursedata := SubStr(cursedata, urlpos)
-
-					;Quickly grab the name of the download jar before it disappears!
-					namepos := (InStr(cursedata, jarname) + 8)
-					namedata := SubStr(cursedata, namepos)
-
-					speechpos := (InStr(namedata, speechmark) - 1)
-					namedata := SubStr(namedata, 1, speechpos)
+					
+					;Next, lets grab the ID of this 1.12.2 file
+					;First trim up to 'projectFileId'
+					fileIDPos := InStr(cursedata, "projectFileId")
+					cursedata := SubStr(cursedata, fileIDPos)
+					;Now remove the first 16 characters to be left with the ID at the start
+					cursedata := SubStr(cursedata, 16)
+					;Find the location of the first comma (marks the end of the ID)
+					fileIDPos := InStr(cursedata, ",")
+					;Grab all data up to that point to get the exact ID of the latest file
+					latestID := SubStr(cursedata, 1, fileIDPos-1)
+					;Put it into the array, ready for use
+					idarray[modcounter] := latestID
+					
+					;Now lets find the name of this latest file
+					;First trim up to it
+					fileNamePos := InStr(cursedata, "projectFileName")
+					cursedata := SubStr(cursedata, fileNamePos)
+					;Now remove the first 19 characters to be left with the name at the start
+					cursedata := SubStr(cursedata, 19)
+					;Find the location of the first speech mark (marks the end of the filename)
+					fileNamePos := InStr(cursedata, """")
+					;Grab all data up to that point to get the exact filename of the latest file
+					latestFileName := SubStr(cursedata, 1, fileNamePos-1)
+					;Put it into the arrayk, ready for use
+					modnamearray[modcounter] := latestFileName
 					
 					;If for whatever reason we haven't found the name of the mod, give up and move on. This should never trigger, i.e. it should always be caught earlier. Left in purely for test purposes
-					if namedata =
+					if latestFileName =
 					{
 						writetext := writetext . "`n" . "-Mod: " outsidedir ". File: " modname ". ERROR, I can't find this file, misc error, maybe check the name?"
 						break
 					}
-
-					;Replace all spaces with pluses in the jar name, CurseForge does this automatically so we need to also. Not sure if required.
-					downloadedmodname := StrReplace(namedata, A_Space, "+")
-					
-					;We've now found the full filename of the latest '.jar' file. Put this in the array for looking at later (if user wants to update).
-					modnamearray[modcounter] := downloadedmodname
-					
-					;Now cut forwards all the remaining junk by searching for a '"', to get the ID
-					speechpos := (InStr(cursedata, speechmark) - 1)
-					cursedata := SubStr(cursedata, 1, speechpos)
-
-					;Now we've just got the basic URL which will be in the form: https:\/\/www.curseforge.com\/minecraft\/mc-mods\/rustic\/download\/2620608
-					;Find the last slash and remove everything up to it, to get the ID
-					slashpos := (InStr(cursedata, "/",,0) + 1)
-					cursedata := SubStr(cursedata, slashpos)
-					
-					idarray[modcounter] := cursedata
 					
 					;If this jar does NOT already exist in the mod directory (for whatever reason), ask if the user wants to update
-					IfNotExist, %modfilesloc%\%outsidedir%\%downloadedmodname%
+					IfNotExist, %modfilesloc%\%outsidedir%\%latestFileName%
 					{
 						;Check to see if the mod is for 1.12.1 (an old mod)
 						if oldmod = true
@@ -4466,34 +4477,41 @@ modsUpdate(modfilesloc)
 						;Else, the mod must be a new mod for 1.12.2
 						else
 						{
+						;"
 							;Ask the first time but if we've already updated one file for a mod, automatically update all the other files for that mod too - to prevent issues
 							if updatemod = false
 							{
 								if countjar > 0
 								{
-									MsgBox, 4353, New file version for %outsidedir%!, Newer version for file %modname% found: %downloadedmodname%. Download?
+									MsgBox, 4353, New file version for %outsidedir%!, Newer version for file %modname% found: %latestFileName%. Download?
 									IfMsgBox, Cancel
 									{
-										writetext := writetext . "`n" . "-Mod: " outsidedir ". File: " modname ". New updated file found but you chose NOT to download it: " downloadedmodname
+										writetext := writetext . "`n" . "-Mod: " outsidedir ". File: " modname ". New updated file found but you chose NOT to download it: " latestFileName
 										modnotupdated = %modname%
 										dontupdatemod = true
 									}
 								}
+								else
+								{
+									updatemod = true
+									writetext := writetext . "`n" . "-Mod: " outsidedir ". File: " modname ". New updated file downloaded: " latestFileName
+								}
+								
 							}
 
-							;If the user doesn't want to update a file, don't update any files for that mod at all (skip without even prompting).
-							if dontupdatemod = false
-							{
-								updatemod = true
-								writetext := writetext . "`n" . "-Mod: " outsidedir ". File: " modname ". New updated file downloaded: " downloadedmodname
-							}
+							;If the user 
+							;if dontupdatemod = false
+							;{
+							;	updatemod = true
+							;	writetext := writetext . "`n" . "-Mod: " outsidedir ". File: " modname ". New updated file downloaded: " latestFileName
+							;}
 						}
 									
 					}
 					else
 					{
 						;If latest version already found, add to UpdateLog.txt
-						writetext := writetext . "`n" . "Mod: " outsidedir ". File: " modname ". Latest version of mod already found: " downloadedmodname
+						writetext := writetext . "`n" . "Mod: " outsidedir ". File: " modname ". Latest version of mod already found: " latestFileName
 					}
 				}
 				else
@@ -4509,7 +4527,6 @@ modsUpdate(modfilesloc)
 				writetext := writetext . "`n" . "-Mod: " outsidedir ". File: " modname ". Ignored since you chose not to update another file necessary for this mod, file: " modnotupdated
 			}
 		}
-		
 		;If we need to update a mod, delete all the jars and then redownload updated ones
 		if updatemod = true
 		{
@@ -4517,7 +4534,6 @@ modsUpdate(modfilesloc)
 			DeleteDir(modfilesloc, outsidedir, skipdelete)
 			UpdateDir(modfilesloc, outsidedir, idarray, modnamearray, skipdelete)
 		}
-		
 	}
 
 	;Finally, delete the UpdateLog.txt if it already exists... and then write all the data to a new one
@@ -4552,12 +4568,17 @@ UpdateDir(modfilesloc, outsidedir, idarray, modnamearray, skipdelete)
 		currentid := idarray[loopcount]
 		currentname := modnamearray[loopcount]
 		
+		;Twitch API splits the ID into 2 parts
+		idpt1 := SubStr(currentid, 1, 4)
+		idpt2 := SubStr(currentid, 5)
+		
 		;UNCOMMENT THE TWO LINES BELOW FOR DEBUG PURPOSES!
 		;MsgBox, Downloading. outsidedir is %outsidedir%, modname is %modname%, loopcount is %loopcount%, currentid is %currentid% and currentname is %currentname%
-		;MsgBox, Therefore I am downloading from: https://minecraft.curseforge.com/projects/%modname%/files/%currentid%/download and to: %outsidedir%\%currentname%
+		;MsgBox, Downloading from: https://edge.forgecdn.net/files/%idpt1%/%idpt2%/%currentname% and to: %outsidedir%\%currentname%
 		IfNotExist, %modfilesloc%\%outsidedir%\%currentname%
 		{
-			UrlDownloadToFile, https://minecraft.curseforge.com/projects/%modname%/files/%currentid%/download, %modfilesloc%\%outsidedir%\%currentname%
+			;MsgBox, Trying to download from https://edge.forgecdn.net/files/%idpt1%/%idpt2%/%currentname%
+			UrlDownloadToFile, https://edge.forgecdn.net/files/%idpt1%/%idpt2%/%currentname%, %modfilesloc%\%outsidedir%\%currentname%
 			If ErrorLevel
 				MsgBox, 4112, Error 2, I'm having trouble downloading this file: %modname% for mod %outsidedir%. Is this mod still available? Or did you forget to run me as an administrator? Skipping mod...
 		}
