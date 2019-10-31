@@ -1111,6 +1111,9 @@ Loop, Parse, modsAll, `,,
 		else if A_LoopField = Roots 2
 		{
 			IniWrite, https://minecraft.curseforge.com/projects/roots, %mploc%\Mods\%A_LoopField%\246183.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/baubles, %mploc%\Mods\%A_LoopField%\227083.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/mysticallib, %mploc%\Mods\%A_LoopField%\277064.url, InternetShortcut, URL
+			IniWrite, https://minecraft.curseforge.com/projects/patchouli, %mploc%\Mods\%A_LoopField%\306770.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Secret Rooms
 		{
