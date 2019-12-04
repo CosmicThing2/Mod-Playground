@@ -1,7 +1,7 @@
 # Mod Playground
 
 ### Minecraft Mod Playground Script - Created by CosmicThing2
-### Latest download: [MPG.exe](https://github.com/CosmicThing2/Mod-Playground/releases/download/v1.022/MPG.exe)
+### Latest download: [MPG.exe](https://github.com/CosmicThing2/Mod-Playground/releases/download/v1.023/MPG.exe)
 
 ## Basic Requirements
 
