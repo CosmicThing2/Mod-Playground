@@ -59,7 +59,7 @@ legacymapver = 0 ;Some maps only work with older versions of minecraft, if a map
 
 ;#addmods1 - Add comma separated mods here
 ;These variables keep track of which mods are which type (basically just a list of all mods), MUST be comma separated with no spaces! Add a mod to these if you'd like! If you add a mod here, you MUST add it to the variable(s) below too.
-modsTech = Advanced Generators,Bonsai Trees,Cyclic,Dark Utilities,Environmental Tech,Industrial Foregoing,Integrated Dynamics,XNet,Applied Energistics,Colossal Chests,Ender Storage,Extra Utilities 2,Extreme Reactors,Quark,Refined Storage,Tinkers Construct,Thermal Expansion,BuildCraft,IndustrialCraft,SecurityCraft,Immersive Engineering,Actually Additions,ProjectE,Storage Drawers,EnderIO,Iron Chests,RFTools,Forestry,Compact Machines,OpenBlocks,Mekanism,Simply Jetpacks,Ex Nihilo,Portal Gun,Simple Teleporters,Project Red,PneumaticCraft
+modsTech = Advanced Generators,Bonsai Trees,Cyclic,Dark Utilities,Environmental Tech,Industrial Foregoing,Integrated Dynamics,XNet,Applied Energistics,Colossal Chests,Ender Storage,Extra Utilities 2,Extreme Reactors,Quark,Refined Storage,Tinkers Construct,Thermal Expansion,BuildCraft,IndustrialCraft,SecurityCraft,Immersive Engineering,Actually Additions,ProjectE,Storage Drawers,EnderIO,Iron Chests,RFTools,Forestry,Compact Machines,OpenBlocks,Mekanism,Simply Jetpacks,Ex Nihilo,Portal Gun,Simple Teleporters,Project Red,PneumaticCraft,ComputerCraft,Open Computers
 modsMagic = Exotic Birds,Dimensional Doors,Millenaire,Minecraft Comes Alive,Aether 2,Electroblobs Wizardry,Vampirism,Serene Seasons,The Erebus,Thaumcraft,Botania,Blood Magic,JourneyMap,Recurrent Complex,Roguelike Dungeons,Roots 2,HarvestCraft,Twilight Forest,Astral Sorcery,Mystical Agriculture,Psi,AbyssalCraft,Betweenlands,Cooking for Blockheads,Biomes O' Plenty,NetherEx,Just a few fish,Totemic,Weeping Angels,Tardis,JurassiCraft,Animania,Chococraft
 modsCreative = Mr Crayfish's Guns,Terrarium,Blockcraftery,Chisel 2,Xtones,BiblioCraft,Decocraft 2,Malisis Doors,Chisels and Bits,Better Builders Wands,WorldEdit,Earthworks,Fairy Lights,Mr Crayfish's Furniture,Secret Rooms,Mr Crayfish's Vehicles,CustomNPCs,Ferdinands Flowers,Streams
 modsOther = Ore Excavation,LAN Server Extended,Heroic Armoury,Minewatch,Chance Cubes,Inventory Pets,Morph,Heroes Expansion,Speedster Heroes,Hats,Pokecube,Spartan Shields,Hardcore Darkness,Viescraft Airships,Lost Cities
@@ -72,7 +72,7 @@ buggyMods = IronMan,Dalek Mod
 
 ;#addmods2 - Add pipe separated mods here, remember last item in list must be a pipe
 ;These variables keep track of everything which is in the left listbox and the right listbox (they need to start out the same as the variables above, but may change as and when the user presses '<' and '>'). Last character MUST be '|'. Add a mod to these if you'd like! If you add a mod here, you MUST add it to the variable(s) above too.
-leftboxTech = Advanced Generators|Bonsai Trees|Cyclic|Dark Utilities|Environmental Tech|Industrial Foregoing|Integrated Dynamics|XNet|Applied Energistics|Colossal Chests|Ender Storage|Extra Utilities 2|Extreme Reactors|Quark|Refined Storage|Tinkers Construct|Thermal Expansion|BuildCraft|IndustrialCraft|SecurityCraft|Immersive Engineering|Actually Additions|ProjectE|Storage Drawers|EnderIO|Iron Chests|RFTools|Forestry|Compact Machines|OpenBlocks|Mekanism|Simply Jetpacks|Ex Nihilo|Portal Gun|Simple Teleporters|Project Red|PneumaticCraft|
+leftboxTech = Advanced Generators|Bonsai Trees|Cyclic|Dark Utilities|Environmental Tech|Industrial Foregoing|Integrated Dynamics|XNet|Applied Energistics|Colossal Chests|Ender Storage|Extra Utilities 2|Extreme Reactors|Quark|Refined Storage|Tinkers Construct|Thermal Expansion|BuildCraft|IndustrialCraft|SecurityCraft|Immersive Engineering|Actually Additions|ProjectE|Storage Drawers|EnderIO|Iron Chests|RFTools|Forestry|Compact Machines|OpenBlocks|Mekanism|Simply Jetpacks|Ex Nihilo|Portal Gun|Simple Teleporters|Project Red|PneumaticCraft|ComputerCraft|Open Computers|
 leftboxMagic = Exotic Birds|Dimensional Doors|Millenaire|Minecraft Comes Alive|Aether 2|Electroblobs Wizardry|Vampirism|Serene Seasons|The Erebus|Thaumcraft|Botania|Blood Magic|JourneyMap|Recurrent Complex|Roguelike Dungeons|Roots 2|HarvestCraft|Twilight Forest|Astral Sorcery|Mystical Agriculture|Psi|AbyssalCraft|Betweenlands|Cooking for Blockheads|Biomes O' Plenty|NetherEx|Just a few fish|Totemic|Weeping Angels|Tardis|JurassiCraft|Animania|Chococraft|
 leftboxCreative = Mr Crayfish's Guns|Terrarium|Blockcraftery|Chisel 2|Xtones|BiblioCraft|Decocraft 2|Malisis Doors|Chisels and Bits|Better Builders Wands|WorldEdit|Earthworks|Fairy Lights|Mr Crayfish's Furniture|Secret Rooms|Mr Crayfish's Vehicles|CustomNPCs|Ferdinands Flowers|Streams|
 leftboxOther = Ore Excavation|LAN Server Extended|Heroic Armoury|Minewatch|Chance Cubes|Inventory Pets|Morph|Heroes Expansion|Speedster Heroes|Hats|Pokecube|Spartan Shields|Hardcore Darkness|Viescraft Airships|Lost Cities|
@@ -838,6 +838,10 @@ Loop, Parse, modsAll, `,,
 		{
 			IniWrite, https://minecraft.curseforge.com/projects/compact-machines, %mploc%\Mods\%A_LoopField%\224218.url, InternetShortcut, URL
 		}
+		else if A_LoopField = ComputerCraft
+		{
+			IniWrite, https://www.curseforge.com/minecraft/mc-mods/cc-tweaked, %mploc%\Mods\%A_LoopField%\282001.url, InternetShortcut, URL
+		}
 		else if A_LoopField = Cooking for Blockheads
 		{
 			IniWrite, https://minecraft.curseforge.com/projects/cooking-for-blockheads, %mploc%\Mods\%A_LoopField%\231484.url, InternetShortcut, URL
@@ -1047,6 +1051,10 @@ Loop, Parse, modsAll, `,,
 		{
 			IniWrite, https://minecraft.curseforge.com/projects/openblocks, %mploc%\Mods\%A_LoopField%\228816.url, InternetShortcut, URL
 			IniWrite, https://minecraft.curseforge.com/projects/openmodslib, %mploc%\Mods\%A_LoopField%\228815.url, InternetShortcut, URL
+		}
+		else if A_LoopField = Open Computers
+		{
+			IniWrite, https://www.curseforge.com/minecraft/mc-mods/opencomputers, %mploc%\Mods\%A_LoopField%\223008.url, InternetShortcut, URL
 		}
 		else if A_LoopField = Ore Excavation
 		{
@@ -2341,6 +2349,13 @@ else if selecteditem = Compact Machines
 	GuiControl, Show, Videotexttech
 	GuiControl, 1:, Videolinktech, <a href="https://www.youtube.com/watch?v=cDUIR8Zv5xw">youtube.com/watch?v=cDUIR8Zv5xw</a>
 }
+else if selecteditem = ComputerCraft
+{
+	GuiControl, 1:, desc%TabModifier%, ComputerCraft is a very powerful mod that allows you to build your own computers and robots, and then program them inside Minecraft to do things for you. Things like programming your own automatic tree farm, or have your house built automatically for you, or even gather diamonds for you! Requires learning the Lua Programming, but very awesome!
+	GuiControl, 1:, descpic%TabModifier%, *w180 *h-1 %modpicsloc%\cc.jpg
+	GuiControl, Show, Videotexttech
+	GuiControl, 1:, Videolinktech, <a href="https://www.youtube.com/watch?v=DSsx4VSe-Uk">youtube.com/watch?v=DSsx4VSe-Uk</a>
+}
 else if selecteditem = Cooking for Blockheads
 {
 	GuiControl, 1:, desc%TabModifier%, Cooking for Blockheads is primarily designed to work with HarvestCraft or another mod which adds lots of food. It adds in a buildable kitchen that you can add food to, and it will then calculate everything you can make with that food. Really smart and a great mod, especially if you're using HarvestCraft!
@@ -2662,6 +2677,13 @@ else if selecteditem = OpenBlocks
 	GuiControl, 1:, descpic%TabModifier%, *w180 *h-1 %modpicsloc%\openblocks.jpg
 	GuiControl, Show, Videotexttech
 	GuiControl, 1:, Videolinktech, <a href="https://www.youtube.com/watch?v=0PJ70T612cw">youtube.com/watch?v=0PJ70T612cw</a>
+}
+else if selecteditem = Open Computers
+{
+	GuiControl, 1:, desc%TabModifier%, Open Computers is a powerful programming mod very similar to ComputerCraft. It's a bit more difficult than ComputerCraft and also requires you to actually build a computer from real parts, it also has more options and is more flexible than ComputerCraft... but the difficulty does go up! Choose this is you're experienced with ComputerCraft already.
+	GuiControl, 1:, descpic%TabModifier%, *w180 *h-1 %modpicsloc%\ocomps.png
+	GuiControl, Show, Videotexttech
+	GuiControl, 1:, Videolinktech, <a href="https://www.youtube.com/watch?v=RnmW0B_IY_k">youtube.com/watch?v=RnmW0B_IY_k</a>
 }
 else if selecteditem = Ore Excavation
 {
@@ -3360,13 +3382,13 @@ resetvars()
 	global 
 
 	;This just sets everything back to default, exactly as it is when you first launch the program
-	leftboxTech = Advanced Generators|Bonsai Trees|Cyclic|Dark Utilities|Environmental Tech|Industrial Foregoing|Integrated Dynamics|XNet|Applied Energistics|Colossal Chests|Ender Storage|Extra Utilities 2|Extreme Reactors|Quark|Refined Storage|Tinkers Construct|Thermal Expansion|BuildCraft|IndustrialCraft|SecurityCraft|Immersive Engineering|Actually Additions|ProjectE|Storage Drawers|EnderIO|Iron Chests|RFTools|Forestry|Compact Machines|OpenBlocks|Mekanism|Simply Jetpacks|Ex Nihilo|Portal Gun|Simple Teleporters|Project Red|PneumaticCraft|
+	leftboxTech = Advanced Generators|Bonsai Trees|Cyclic|Dark Utilities|Environmental Tech|Industrial Foregoing|Integrated Dynamics|XNet|Applied Energistics|Colossal Chests|Ender Storage|Extra Utilities 2|Extreme Reactors|Quark|Refined Storage|Tinkers Construct|Thermal Expansion|BuildCraft|IndustrialCraft|SecurityCraft|Immersive Engineering|Actually Additions|ProjectE|Storage Drawers|EnderIO|Iron Chests|RFTools|Forestry|Compact Machines|OpenBlocks|Mekanism|Simply Jetpacks|Ex Nihilo|Portal Gun|Simple Teleporters|Project Red|PneumaticCraft|ComputerCraft|Open Computers|
 	leftboxMagic = Exotic Birds|Dimensional Doors|Millenaire|Minecraft Comes Alive|Aether 2|Electroblobs Wizardry|Vampirism|Serene Seasons|The Erebus|Thaumcraft|Botania|Blood Magic|JourneyMap|Recurrent Complex|Roguelike Dungeons|Roots 2|HarvestCraft|Twilight Forest|Astral Sorcery|Mystical Agriculture|Psi|AbyssalCraft|Betweenlands|Cooking for Blockheads|Biomes O' Plenty|NetherEx|Just a few fish|Totemic|Weeping Angels|Tardis|JurassiCraft|Animania|Chococraft|
 	leftboxCreative = Mr Crayfish's Guns|Terrarium|Blockcraftery|Chisel 2|Xtones|BiblioCraft|Decocraft 2|Malisis Doors|Chisels and Bits|Better Builders Wands|WorldEdit|Earthworks|Fairy Lights|Mr Crayfish's Furniture|Secret Rooms|Mr Crayfish's Vehicles|CustomNPCs|Ferdinands Flowers|Streams|
 	leftboxOther = Ore Excavation|LAN Server Extended|Heroic Armoury|Minewatch|Chance Cubes|Inventory Pets|Morph|Heroes Expansion|Speedster Heroes|Hats|Pokecube|Spartan Shields|Hardcore Darkness|Viescraft Airships|Lost Cities|
 	rightbox =
 	
-	modsTech = Advanced Generators,Bonsai Trees,Cyclic,Dark Utilities,Environmental Tech,Industrial Foregoing,Integrated Dynamics,XNet,Applied Energistics,Colossal Chests,Ender Storage,Extra Utilities 2,Extreme Reactors,Quark,Refined Storage,Tinkers Construct,Thermal Expansion,BuildCraft,IndustrialCraft,SecurityCraft,Immersive Engineering,Actually Additions,ProjectE,Storage Drawers,EnderIO,Iron Chests,RFTools,Forestry,Compact Machines,OpenBlocks,Mekanism,Simply Jetpacks,Ex Nihilo,Portal Gun,Simple Teleporters,Project Red,PneumaticCraft
+	modsTech = Advanced Generators,Bonsai Trees,Cyclic,Dark Utilities,Environmental Tech,Industrial Foregoing,Integrated Dynamics,XNet,Applied Energistics,Colossal Chests,Ender Storage,Extra Utilities 2,Extreme Reactors,Quark,Refined Storage,Tinkers Construct,Thermal Expansion,BuildCraft,IndustrialCraft,SecurityCraft,Immersive Engineering,Actually Additions,ProjectE,Storage Drawers,EnderIO,Iron Chests,RFTools,Forestry,Compact Machines,OpenBlocks,Mekanism,Simply Jetpacks,Ex Nihilo,Portal Gun,Simple Teleporters,Project Red,PneumaticCraft,ComputerCraft,Open Computers
 	modsMagic = Exotic Birds,Dimensional Doors,Millenaire,Minecraft Comes Alive,Aether 2,Electroblobs Wizardry,Vampirism,Serene Seasons,The Erebus,Thaumcraft,Botania,Blood Magic,JourneyMap,Recurrent Complex,Roguelike Dungeons,Roots 2,HarvestCraft,Twilight Forest,Astral Sorcery,Mystical Agriculture,Psi,AbyssalCraft,Betweenlands,Cooking for Blockheads,Biomes O' Plenty,NetherEx,Just a few fish,Totemic,Weeping Angels,Tardis,JurassiCraft,Animania,Chococraft
 	modsCreative = Mr Crayfish's Guns,Terrarium,Blockcraftery,Chisel 2,Xtones,BiblioCraft,Decocraft 2,Malisis Doors,Chisels and Bits,Better Builders Wands,WorldEdit,Earthworks,Fairy Lights,Mr Crayfish's Furniture,Secret Rooms,Mr Crayfish's Vehicles,CustomNPCs,Ferdinands Flowers,Streams
 	modsOther = Ore Excavation,LAN Server Extended,Heroic Armoury,Minewatch,Chance Cubes,Inventory Pets,Morph,Heroes Expansion,Speedster Heroes,Hats,Pokecube,Spartan Shields,Hardcore Darkness,Viescraft Airships,Lost Cities
